@@ -24,13 +24,7 @@ public final class Solution {
             }
         }
     }
-    /**
-     * Function to check whether given nuumber is prime or not
-     *
-     * @param      val   The value
-     *
-     * @return     { description_of_the_return_value }
-     */
+
     public static boolean prime(int val){
         boolean flag = true;
         for (int i = 2; i< val/2 ; i++ ) {
