@@ -14,7 +14,7 @@ public class Solution {
             max = n2;
         }
         for(int i = 1; i <= max ; i++){
-            if(n1 % i == 0 && n2 % 2 == 0 ){
+            if(n1 % i == 0 && n2 % i == 0 ){
                 gcd = i;
             }
         }
