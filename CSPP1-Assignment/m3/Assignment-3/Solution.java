@@ -8,7 +8,7 @@ public class Solution {
     public static int gcd = 0;
     public static void gcd(int n1, int n2) {
         int max = 1;
-        if(n1 > n2){
+        if(n1 < n2){
             max = n1;
         }else{
             max = n2;
