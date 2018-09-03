@@ -6,9 +6,9 @@ public class Solution {
 	*/
 	public static double rootsOfQuadraticEquation(int a, int b,int c, char si){
 		if(si == '+'){
-			return (-(b) + Math.sqrt((Math.pow(b,2)) - 4 * a * c))/2 * a;
+			return (-b + Math.sqrt(Math.pow(b,2) - (4 * a * c)))/(2 * a);
 		}else{
-			return (-(b) - Math.sqrt((Math.pow(b,2)) - 4 * a * c))/2 * a;
+			return (-b - Math.sqrt(Math.pow(b,2) - (4 * a * c)))/(2 * a);
 		}
 	}
 	public static void main(String[] args) {
@@ -20,7 +20,4 @@ public class Solution {
 		System.out.print(" ");
 		System.out.print(rootsOfQuadraticEquation(a, b, c, '-'));
 	}
-	/*
-	Need to write the rootsOfQuadraticEquation function and print the output.
-	*/
 }
