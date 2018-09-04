@@ -139,7 +139,7 @@ public class List {
             list[size - 1] = 0;
             size--;
         }else{
-            System.out.println("Not valid Operation.");
+            System.out.println("Invalid Position Exception");
         }
     }
 
