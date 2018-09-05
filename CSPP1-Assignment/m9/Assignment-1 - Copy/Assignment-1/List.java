@@ -94,11 +94,11 @@ public class List {
      *
      */
 
-    // // todo - add an overloaded constructor here
-    // public List(int capacity){
-    //     list = new  int[capacity];
-    //     size = 0;
-    // }
+    // todo - add an overloaded constructor here
+    public List(int capacity){
+        list = new  int[capacity];
+        size = 0;
+    }
 
     /*
      * The add method does what the name suggests.
