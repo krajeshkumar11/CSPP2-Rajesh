@@ -1,7 +1,7 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
 
-public class List {
+public class List implements ListInterface {
 	//Implement all the methods mentioned to build a ListADT
 
     /*
@@ -53,10 +53,14 @@ public class List {
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
+
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
+    private int[] list;
+    private int size;
+    private final int DEFAULT_SIZE = 10;
     public List() {
 
         // what are the two variables to be initialized here?
@@ -69,6 +73,8 @@ public class List {
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
+        list = new int[DEFAULT_SIZE];
+        size = 0;
     }
 
     /*
@@ -84,6 +90,10 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
+        if(size < list.length){
+            list[size] = item;
+            size++;
+        }
     }
 
     /*
@@ -95,6 +105,7 @@ public class List {
      */
     public int size() {
         // replace the code below to implement the size method
+        return size;
     }
 
     /*
@@ -120,6 +131,14 @@ public class List {
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
+        if(index < size){
+            for (int i = index - 1; i < size ;i++ ) {
+                list[i] = list[i+1];
+            }
+            size--;
+        }else{
+            System.out.println("Invalid Position Exception");
+        }
     }
 
     /*
@@ -135,6 +154,10 @@ public class List {
      */
     public int get(int index) {
         // Replace the code below to write the code for get
+        if(index < size){
+            return list[index];
+        }
+        // System.out.println("Index Out of Bounds Exception");
         return -1;
     }
 
@@ -160,7 +183,15 @@ public class List {
      */
     public String toString() {
         // Replace the code below
-        return "print the list";
+        String list_st = "[";
+        for (int i = 0; i < size; i++ ) {
+            list_st += list[i];
+            if(i < size-1){
+                list_st += ",";
+            }
+        }
+        list_st += "]";
+        return list_st;
     }
 
     /*
@@ -171,7 +202,12 @@ public class List {
      */
     public boolean contains(int item) {
         // Replace the code below
-        return true;
+        // for (int i = 0; i <= size; i++ ) {
+        //     if(list[i] == item){
+        //         return true;
+        //     }
+        // }
+        return indexOf(item) >= 0;
     }
 
     /*
@@ -181,6 +217,11 @@ public class List {
      */
     public int indexOf(int item) {
         // Replace the code below
+        for (int i = 0; i <= size; i++ ) {
+            if(list[i] == item){
+                return i;
+            }
+        }
         return -1;
     }
 

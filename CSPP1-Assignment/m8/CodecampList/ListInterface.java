@@ -7,7 +7,7 @@ interface ListInterface{
     public boolean contains(int item);
     public int indexOf(int item);
 
-    public void addAll(int[] items);
-    public void add(int index, int item);
-    public int count(int item);
+    // public void addAll(int[] items);
+    // public void add(int index, int item);
+    // public int count(int item);
 }
