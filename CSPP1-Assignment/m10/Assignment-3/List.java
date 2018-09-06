@@ -175,11 +175,12 @@ public class List<E> {
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
+
     public int indexOf(E item) {
        //Write logic for indexOf method
         // return -1;
        for (int i = 0; i < size ; i++ ) {
-            if(list[i] == item){
+            if(list[i].equals(item)){
                 return i;
             }
         }
