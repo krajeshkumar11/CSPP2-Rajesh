@@ -310,11 +310,15 @@ public class List {
     }
 
     public void add(int index, int item){
-        for (int i = size; i > index  ;i-- ) {
-            list[i] = list[i - 1];
+        if(index >= 0){
+            for (int i = size; i > index  ;i-- ) {
+                list[i] = list[i - 1];
+            }
+            list[index] = item;
+            size++;
+        }else{
+            System.out.println("Negative Index Exception");
         }
-        list[index] = item;
-        size++;
     }
 
 	public static void main(String[] args) {
@@ -365,7 +369,9 @@ public class List {
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
                 case "addAll":
-                l.addAll(l.convertToInt(tokens[1]));
+                if(tokens.length == 2){
+                    l.addAll(l.convertToInt(tokens[1]));
+                }
                 break;
                 case "count":
                 System.out.println(l.count(Integer.parseInt(tokens[1])));
