@@ -10,21 +10,21 @@ import java.util.Scanner;
      * So, when we do not what we are going to have in the list
      * We need to create a Generic list to store the items
 
-     * Here E is a type parameter, and it will be replaced with
+     * Here T is a type parameter, and it will be replaced with
         actual type when the object got created.
      */
-public class List<E> {
-    private E[] list;
+public class List<T> {
+    private T[] list;
     private int size;
     //Constructor
     public List() {
         // Create a variable of the type Object[]
-        list = ((E[])new Object[10]);//Object is the base class for all the classes
+        list = ((T[])new Object[10]);//Object is the base class for all the classes
         size = 0;
     }
     //Overloaded Constructor
     public List(int param) {
-        list = ((E[])new Object[param]);
+        list = ((T[])new Object[param]);
         size = 0;
     }
     /* The add method does what the name suggests.
@@ -35,7 +35,7 @@ public class List<E> {
      * Think about how you can use the size variable to add item
      * to the list.
      */
-    public void add(E item) {
+    public void add(T item) {
         //Inserts the specified element at the end of the list.
         //You can modify the code in this method.
         // list[(size++)] = item;
@@ -49,7 +49,7 @@ public class List<E> {
     }
     /*Inserts all the elements of specified int
     array to the end of list*/
-    public void addAll(E[] items) {
+    public void addAll(T[] items) {
         //Write logic for addAll method
         for (int i = 0; i < items.length ; i++ ) {
             add(items[i]);
@@ -59,7 +59,7 @@ public class List<E> {
      * { function_description }
      */
     private void resize(){
-        E[] newlist = ((E[])new Object[2 * list.length]);
+        T[] newlist = ((T[])new Object[2 * list.length]);
         System.arraycopy(list, 0, newlist, 0, size);
         list = newlist;
     }
@@ -117,7 +117,7 @@ public class List<E> {
      * How do we check if the position is greater than the
      * number of items in the list? Would size variable be useful?
      */
-    public E get(int index) {
+    public T get(int index) {
          //Write logic for get method
         // return list[index];
         if(index > -1 && index < size){
@@ -165,7 +165,7 @@ public class List<E> {
      * So, iterate through the list and return true if
      * the item exists and otherwise false
      */
-    public boolean contains(E item) {
+    public boolean contains(T item) {
 		//Write logic for contains method
         // return true;
         return indexOf(item) >= 0;
@@ -176,7 +176,7 @@ public class List<E> {
      * or -1 if this list does not contain the element.
      */
 
-    public int indexOf(E item) {
+    public int indexOf(T item) {
        //Write logic for indexOf method
         // return -1;
        for (int i = 0; i < size ; i++ ) {
