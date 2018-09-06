@@ -90,11 +90,16 @@ public class List<E> {
      */
     public void remove(int index) {
         //Write logic for remove method
-        for (int i = index; i < size - 1 ; i++ ) {
-            list[i] = list[i + 1];
+        if(index >= 0 && index < size){
+            for (int i = index; i < size - 1 ; i++ ) {
+                list[i] = list[i + 1];
+            }
+            list[size] = null;
+            size--;
+        }else{
+            System.out.println("Invalid Position Exception");
         }
-        list[size] = null;
-        size--;
+
     }
     /*
      * Get method has to return the items that is
