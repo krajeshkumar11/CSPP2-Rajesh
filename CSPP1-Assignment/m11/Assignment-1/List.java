@@ -341,8 +341,8 @@ public class List {
     public List subList(int startIndex, int endIndex)
     {
         // write the logic for subListpl
+        List newlist = new List();
         if(startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()){
-            List newlist = new List();
             // E[] newint = ((E[])new Object[endIndex - startIndex]);
             int count = 0;
             for (int i = startIndex; i < endIndex ; i++ ) {
@@ -350,10 +350,12 @@ public class List {
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
             return newlist;
-        }else{
+        }else if(startIndex < 0 || endIndex < 0 || startIndex > endIndex){
             System.out.println("Index Out of Bounds Exception");
+            return null;
+        }else{
+            return newlist;
         }
-        return null;
     }
     /*Returns a boolean indicating whether the parameter
       i.e a List object is exactly matching with the given list or not.
