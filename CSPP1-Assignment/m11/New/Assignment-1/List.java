@@ -224,11 +224,10 @@ public class List {
      {
         // write the logic
         for (int i = 0; i < newArray.length; i++) {
-            int[] data = new int[list.length];
-            System.arraycopy(list, 0, data, 0, size);
-            for (int j = 0; j < size; j++) {
-                if (newArray[i] == data[j]) {
+            for (int j = 0; j <= size; j++) {
+                if (newArray[i] == list[j]) {
                     remove(j);
+                    j--;
                     // System.out.println(toString());
                 }
             }
