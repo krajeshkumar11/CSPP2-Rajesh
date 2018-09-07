@@ -139,7 +139,6 @@ public class List {
         } else {
             System.out.println("Invalid Position Exception");
         }
-        System.out.println(java.util.Arrays.toString(list));
     }
 
     /*
@@ -224,8 +223,8 @@ public class List {
      public void removeAll(int[] newArray)
      {
         // write the logic
-        for (int j = 0; j < size(); j++) {
-            for (int i = 0; i < newArray.length; i++) {
+        for (int i = 0; i < newArray.length; i++) {
+            for (int j = 0; j < size; j++) {
                 // if (newArray[i] == list[j]) {
                 //     System.out.println(toString()  + " " + list[j] + " " + j);
                 //     remove(j);
