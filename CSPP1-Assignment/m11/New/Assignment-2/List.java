@@ -229,12 +229,13 @@ public class List<E> {
      */
     public boolean equals(List<E> listdata)
     {
-        for (int i = 0; i < listdata.size();i++ ) {
-            if(!contains(listdata.get(i))){
-                return false;
-            }
-        }
-        return true;
+        // for (int i = 0; i < listdata.size();i++ ) {
+        //     if(!contains(listdata.get(i))){
+        //         return false;
+        //     }
+        // }
+        // return true;
+        return this.toString().equals(listdata.toString());
     }
     /*Removes all the elements from list*/
     public void clear()
