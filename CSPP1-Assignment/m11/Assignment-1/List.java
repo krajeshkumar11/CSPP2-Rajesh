@@ -342,7 +342,7 @@ public class List {
      */
     public void add(int index, int item) {
         if (index >= 0) {
-            for (int i = size; i > index ;i--) {
+            for (int i = size; i > index ; i--) {
                 list[i] = list[i - 1];
             }
             list[index] = item;
@@ -400,7 +400,7 @@ public class List {
       i.e a List object is exactly matching with the given list or not.
      */
     public boolean equals(List listdata) {
-        for (int i = 0; i < listdata.size();i++) {
+        for (int i = 0; i < listdata.size(); i++) {
             if (!contains(listdata.get(i))) {
                 return false;
             }
