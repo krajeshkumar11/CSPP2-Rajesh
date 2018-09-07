@@ -389,7 +389,7 @@ public class List {
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
             return newlist;
-        }else if (startIndex < 0 || endIndex < 0 || endIndex > size()) {
+        } else if (startIndex < 0 || endIndex < 0 || endIndex > size()) {
             System.out.println("Index Out of Bounds Exception");
             return null;
         } else {
