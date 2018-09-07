@@ -29,6 +29,7 @@ public class List {
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
+    public final int DEFAULT = 10;
     private int[] list;
 
     /*
@@ -42,8 +43,8 @@ public class List {
      * denotes the number of items in the list. Makes sense?
      * Here is an example:
      * array = [1,2,3,0,0,0,0,0,0,0]
-     * The length of the array is 10 and size is 3.
-     * This means you can store 10 items in the list and
+     * The length of the array is DEFAULT and size is 3.
+     * This means you can store DEFAULT items in the list and
      * currently it has 3 items.
      * So, to keep track of the size we need a variable called size
      * Again, we use private as we don't want that size variable
@@ -66,21 +67,21 @@ public class List {
         // think about the private variables described above.
         // What should be the default values?
         // In the case of the list, it should be empty but
-        // it should be initialized with an array size like 10
+        // it should be initialized with an array size like DEFAULT
 
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-        list = new int[10];
+        list = new int[DEFAULT];
         size = 0;
 
     }
 
     /*
      * Overloaded constructor with list capacity as argument The default
-     * constructor sets the list capacity to 10 So, adding an item when the list
-     * size is 10 raises a Index Out of Bounds Exception There will be some
+     * constructor sets the list capacity to DEFAULT So, adding an item when the list
+     * size is DEFAULT raises a Index Out of Bounds Exception There will be some
      * clients of the ADT that will require the list to contain n elements which
      * is known at the time of creating the list.
      *
@@ -189,7 +190,7 @@ public class List {
      * The method returns void (nothing)
      */
     //
-    // size = 10 8 < 9 [1,2,3,0,0,0,0,0,11,14]
+    // size = DEFAULT 8 < 9 [1,2,3,0,0,0,0,0,11,14]
     //
     // @param      index  The index
     //
@@ -409,7 +410,7 @@ public class List {
     /*Removes all the elements from list*/
     public void clear() {
         // write the logic for clear.
-        list = new int[10];
+        list = new int[DEFAULT];
         size = 0;
     }
 
