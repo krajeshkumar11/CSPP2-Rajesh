@@ -57,8 +57,8 @@ public class List {
     private int size;
 
     /*
-     * The purpose of the constructor is to initialize the
-     * class variables with some default values.
+     * The purpose of the constructor is to initialize the class variables with
+     * some default values.
      */
     public List() {
 
@@ -78,18 +78,16 @@ public class List {
     }
 
     /*
-     * Overloaded constructor with list capacity as argument
-     * The default constructor sets the list capacity to 10
-     * So, adding an item when the list size is 10
-     * raises a Index Out of Bounds Exception
-     * There will be some clients of the ADT that will require
-     * the list to contain n elements which is known
-     * at the time of creating the list.
+     * Overloaded constructor with list capacity as argument The default
+     * constructor sets the list capacity to 10 So, adding an item when the list
+     * size is 10 raises a Index Out of Bounds Exception There will be some
+     * clients of the ADT that will require the list to contain n elements which
+     * is known at the time of creating the list.
      *
-     * The overloaded constructor is a way to initialize a list with
-     * a list capacity of n items where n is given as an argument to
-     * constructor.
+     * The overloaded constructor is a way to initialize a list with a list
+     * capacity of n items where n is given as an argument to constructor.
      *
+     * @param      capacity  The capacity
      */
     public List(int capacity) {
         size = 0;
@@ -97,15 +95,14 @@ public class List {
     }
 
     /*
-     * The add method does what the name suggests.
-     * Add an int item to the list.
-     * The assumption is to store the item at the end of the list
-     * What is the end of the list?
-     * Is it the same as the end of the array?
-     * Think about how you can use the size variable to add item
-     * to the list.
+     * The add method does what the name suggests. Add an int item to the list.
+     * The assumption is to store the item at the end of the list What is the
+     * end of the list? Is it the same as the end of the array? Think about how
+     * you can use the size variable to add item to the list.
      *
      * The method returns void (nothing)
+     *
+     * @param      item  The item
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
@@ -149,7 +146,9 @@ public class List {
      *
      */
 
+    //
     // todo create resize method
+    //
     private void resize(){
         int[] newlist = new int[2 * list.length];
         System.arraycopy(list, 0, newlist, 0, size);
@@ -157,11 +156,12 @@ public class List {
     }
 
     /*
-     * The size method returns the value of the size.
-     * The purpose of the method is to announce the size of the list
-     * to the objects outside the list
+     * The size method returns the value of the size. The purpose of the method
+     * is to announce the size of the list to the objects outside the list
      *
      * The method returns an int. Empty list should return 0.
+     *
+     * @return     { description_of_the_return_value }
      */
     public int size() {
         // replace the code below to implement the size method
@@ -188,9 +188,11 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-    // size = 10
-    // 8 < 9
-    // [1,2,3,0,0,0,0,0,11,14]
+    //
+    // size = 10 8 < 9 [1,2,3,0,0,0,0,0,11,14]
+    //
+    // @param      index  The index
+    //
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
@@ -206,15 +208,17 @@ public class List {
     }
 
     /*
-     * Get method has to return the items that is
-     * at the index position passed as an argument to the method.
-     * If the item doesn't exist then return a -1 to indicate that
-     * there is no element at that index.
-     * How can an element not be there at a given position?
-     * Well, if the position is greater than the number of items
-     * in the list then that would mean the item doesn't exist.
-     * How do we check if the position is greater than the
-     * number of items in the list? Would size variable be useful?
+     * Get method has to return the items that is at the index position passed
+     * as an argument to the method. If the item doesn't exist then return a -1
+     * to indicate that there is no element at that index. How can an element
+     * not be there at a given position? Well, if the position is greater than
+     * the number of items in the list then that would mean the item doesn't
+     * exist. How do we check if the position is greater than the number of
+     * items in the list? Would size variable be useful?
+     *
+     * @param      index  The index
+     *
+     * @return     { description_of_the_return_value }
      */
     public int get(int index) {
         // Replace the code below to write the code for get
@@ -225,24 +229,19 @@ public class List {
     }
 
     /*
-     * What happens when you print an object using println?
-     * Java provides a method named toString that is internally
-     * invoked when an object variable is used in println.
-     * For example:
-     * List l = new List();
-     * System.out.println(l);
-     * This statement is a shortcut for
+     * What happens when you print an object using println? Java provides a
+     * method named toString that is internally invoked when an object variable
+     * is used in println. For example: List l = new List();
+     * System.out.println(l); This statement is a shortcut for
      * System.out.println(l.toString());
      *
-     * So, implement the toString method to display the items
-     * in the list in the square brackets notation.
-     * i.e., if the list has numbers 1, 2, 3
-     * return the string [1,2,3]
-     * Caution: The array may be having other elements
-     * Example: [1,2,3,0,0,0,0,0,0,0]
-     * toString should only return the items in the list and
-     * not all the elements of the array.
+     * So, implement the toString method to display the items in the list in the
+     * square brackets notation. i.e., if the list has numbers 1, 2, 3 return
+     * the string [1,2,3] Caution: The array may be having other elements
+     * Example: [1,2,3,0,0,0,0,0,0,0] toString should only return the items in
+     * the list and not all the elements of the array.
      *
+     * @return     String representation of the object.
      */
     public String toString() {
         // Replace the code below
@@ -259,10 +258,13 @@ public class List {
     }
 
     /*
-     * Contains return true if the list has
-     * the item passed as an argument to the method
-     * So, iterate through the list and return true if
-     * the item exists and otherwise false
+     * Contains return true if the list has the item passed as an argument to
+     * the method So, iterate through the list and return true if the item
+     * exists and otherwise false
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
      */
     public boolean contains(int item) {
         // Replace the code below
@@ -270,9 +272,12 @@ public class List {
     }
 
     /*
-     * Returns the index of the first occurrence
-     * of the specified element in this list,
-     * or -1 if this list does not contain the element.
+     * Returns the index of the first occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element.
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
      */
     public int indexOf(int item) {
         // Replace the code below
@@ -284,12 +289,24 @@ public class List {
         return -1;
     }
 
+    /**
+     * Adds all.
+     *
+     * @param      arr   The arr
+     */
     public void addAll(int[] arr){
         for (int i = 0; i < arr.length ; i++ ) {
             add(arr[i]);
         }
     }
 
+    /**
+     * { function_description }
+     *
+     * @param      str   The string
+     *
+     * @return     { description_of_the_return_value }
+     */
     public int[] convertToInt(String str){
         String[] strArr = str.split(",");
         int[] intArr = new int[strArr.length];
@@ -299,6 +316,13 @@ public class List {
         return intArr;
     }
 
+    /**
+     * { function_description }
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
     public int count(int item){
         int count = 0;
         for (int i = 0; i < size; i++ ) {
@@ -309,6 +333,12 @@ public class List {
         return count;
     }
 
+    /**
+     * { function_description }
+     *
+     * @param      index  The index
+     * @param      item   The item
+     */
     public void add(int index, int item){
         if(index >= 0){
             for (int i = size; i > index  ;i-- ) {
@@ -320,7 +350,11 @@ public class List {
             System.out.println("Negative Index Exception");
         }
     }
-
+    /**
+     * Removes all.
+     *
+     * @param      items  The items
+     */
     public void removeAll(int[] items)
     {
         // write the logic
@@ -334,11 +368,16 @@ public class List {
         }
     }
 
-    /*Returns a list containing elements, including
-     startIndex and excluding endIndex. The first parameter
-     indicates the startIndex and the second parameter
-     indicates the endIndex.
-     */
+    /*
+     Returns a list containing elements, including startIndex and excluding
+     endIndex. The first parameter indicates the startIndex and the second
+     parameter indicates the endIndex.
+
+     @param      startIndex  The start index
+     @param      endIndex    The end index
+
+     @return     { description_of_the_return_value }
+    */
     public List subList(int startIndex, int endIndex)
     {
         // write the logic for subListpl
