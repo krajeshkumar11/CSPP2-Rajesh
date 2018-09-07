@@ -195,10 +195,13 @@ public class List<E> {
         // write the logic
         for (int i = 0; i < items.length; i++) {
             for (int j = 0; j < size(); j++) {
-                if(items[i].equals(this.get(j))){
-                    remove(j);
-                    j--;
-                }
+                int index = this.indexOf(items[i]);
+                // if(items[i].equals(this.get(j))){
+                    if (index >= 0 && index < size()) {
+                        remove(index);
+                    }
+                    // j--;
+                // }
             }
         }
     }
