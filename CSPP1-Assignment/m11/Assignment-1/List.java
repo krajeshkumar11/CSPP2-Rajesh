@@ -197,7 +197,7 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < size) {
-            for (int i = index; i < size - 1; i++ ) {
+            for (int i = index; i < size - 1; i++) {
                 list[i] = list[i + 1];
             }
             list[size - 1] = 0;
@@ -247,7 +247,7 @@ public class List {
         // Replace the code below
         String str = "[";
         String cmm = ",";
-        for ( int i = 0; i < size ; i++ ) {
+        for ( int i = 0; i < size; i++) {
             str += Integer.toString(list[i]);
             if (i < size - 1) {
                 str += cmm;
@@ -281,7 +281,7 @@ public class List {
      */
     public int indexOf(int item) {
         // Replace the code below
-        for (int i = 0; i < size ; i++ ) {
+        for (int i = 0; i < size; i++) {
             if (list[i] == item) {
                 return i;
             }
@@ -295,7 +295,7 @@ public class List {
      * @param      arr   The arr
      */
     public void addAll(int[] arr) {
-        for (int i = 0; i < arr.length ; i++ ) {
+        for (int i = 0; i < arr.length; i++) {
             add(arr[i]);
         }
     }
@@ -310,7 +310,7 @@ public class List {
     public int[] convertToInt(String str) {
         String[] strArr = str.split(",");
         int[] intArr = new int[strArr.length];
-        for (int i = 0; i < strArr.length ; i++ ) {
+        for (int i = 0; i < strArr.length; i++) {
             intArr[i] = Integer.parseInt(strArr[i]);
         }
         return intArr;
@@ -325,7 +325,7 @@ public class List {
      */
     public int count(int item) {
         int count = 0;
-        for (int i = 0; i < size; i++ ) {
+        for (int i = 0; i < size; i++) {
             if (list[i] == item) {
                 count++;
             }
@@ -341,7 +341,7 @@ public class List {
      */
     public void add(int index, int item) {
         if (index >= 0) {
-            for (int i = size; i > index  ;i-- ) {
+            for (int i = size; i > index ;i--) {
                 list[i] = list[i - 1];
             }
             list[index] = item;
@@ -357,8 +357,8 @@ public class List {
      */
     public void removeAll(int[] items) {
         // write the logic
-        for (int i = 0; i < items.length ; i++ ) {
-            for (int j = 0; j < size ; j++ ) {
+        for (int i = 0; i < items.length; i++) {
+            for (int j = 0; j < size; j++) {
                 if (items[i] == list[j]) {
                     remove(j);
                     // System.out.println(toString());
@@ -383,7 +383,7 @@ public class List {
         if (startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()) {
             // E[] newint = ((E[])new Object[endIndex - startIndex]);
             int count = 0;
-            for (int i = startIndex; i < endIndex ; i++ ) {
+            for (int i = startIndex; i < endIndex; i++) {
                 newlist.add(get(i));
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
@@ -399,7 +399,7 @@ public class List {
       i.e a List object is exactly matching with the given list or not.
      */
     public boolean equals(List listdata) {
-        for (int i = 0; i < listdata.size();i++ ) {
+        for (int i = 0; i < listdata.size();i++) {
             if (!contains(listdata.get(i))) {
                 return false;
             }
