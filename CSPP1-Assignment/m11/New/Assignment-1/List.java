@@ -139,6 +139,7 @@ public class List {
         } else {
             System.out.println("Invalid Position Exception");
         }
+        System.out.println(java.util.Arrays.toString(list));
     }
 
     /*
