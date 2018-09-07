@@ -224,8 +224,10 @@ public class List {
      {
         // write the logic
         for (int i = 0; i < newArray.length; i++) {
+            int[] data = new int[list.length];
+            System.arraycopy(list, 0, data, 0, size);
             for (int j = 0; j < size; j++) {
-                if (newArray[i] == list[j]) {
+                if (newArray[i] == data[j]) {
                     remove(j);
                     // System.out.println(toString());
                 }
@@ -251,7 +253,7 @@ public class List {
                 // System.out.println(i + " " + end + " " + newint[i] + " " + size());
             }
             return newlist;
-        } else if (start < 0 || end < 0 || end > size()) {
+        } else if (start == end || start < 0 || end < 0 || end > size()) {
             System.out.println("Index Out of Bounds Exception");
             return null;
         } else {
@@ -265,12 +267,13 @@ public class List {
     public boolean equals(List list )
     {
         // Replace the code below
-        for (int i = 0; i < list.size(); i++) {
-            if (!contains(list.get(i))) {
-                return false;
-            }
-        }
-        return true;
+        // for (int i = 0; i < list.size(); i++) {
+        //     if (!contains(list.get(i))) {
+        //         return false;
+        //     }
+        // }
+        // return true;
+        return this.toString().equals(list.toString());
     }
     /*
     * Removes all the elements from list
