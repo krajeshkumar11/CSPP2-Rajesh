@@ -193,11 +193,10 @@ public class List<E> {
     public void removeAll(E[] items)
     {
         // write the logic
-        for (int i = 0; i < items.length; i++) {
-            for (int j = 0; j < size(); j++) {
-                if(items[i].equals(this.get(j))){
+        for (int i = 0; i < items.length ; i++ ) {
+            for (int j = 0; j < size ; j++ ) {
+                if(items[i] == list[j]){
                     remove(j);
-                    j--;
                 }
             }
         }
@@ -211,39 +210,32 @@ public class List<E> {
     public List subList(int startIndex, int endIndex)
     {
         // write the logic for subListpl
-        if(startIndex < 0){
+        if(startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()){
+            List<E> newlist = new List();
+            // E[] newint = ((E[])new Object[endIndex - startIndex]);
+            int count = 0;
+            for (int i = startIndex; i < endIndex ; i++ ) {
+                newlist.add(get(i));
+                // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
+            }
+            return newlist;
+        }else{
             System.out.println("Index Out of Bounds Exception");
-            return null;
         }
-        if(endIndex < 0){
-            System.out.println("Index Out of Bounds Exception");
-            return null;
-        }
-        if(endIndex < startIndex){
-            System.out.println("Index Out of Bounds Exception");
-            return null;
-        }
-        if(endIndex > size()){
-            System.out.println("Index Out of Bounds Exception");
-            return null;
-        }
-        if(startIndex == endIndex){
-            System.out.println("Index Out of Bounds Exception");
-            return null;
-        }
-        List<E> newlist = new List();
-        for (int i = startIndex; i < endIndex; i++) {
-            newlist.add(this.get(i));
-        }
-        return newlist;
+        return null;
     }
     /*Returns a boolean indicating whether the parameter
       i.e a List object is exactly matching with the given list or not.
      */
     public boolean equals(List<E> listdata)
     {
+        // for (int i = 0; i < listdata.size();i++ ) {
+        //     if(!contains(listdata.get(i))){
+        //         return false;
+        //     }
+        // }
+        // return true;
         return this.toString().equals(listdata.toString());
-        // return Arrays.equals(listdata.list, list);
     }
     /*Removes all the elements from list*/
     public void clear()
