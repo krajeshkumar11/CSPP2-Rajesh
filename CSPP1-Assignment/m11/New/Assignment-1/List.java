@@ -225,20 +225,10 @@ public class List {
         // write the logic
         for (int i = 0; i < newArray.length; i++) {
             for (int j = 0; j < size; j++) {
-                // if (newArray[i] == list[j]) {
-                //     System.out.println(toString()  + " " + list[j] + " " + j);
-                //     remove(j);
-                //     j--;
-                // }else{
-                //     System.out.println(toString() + " " + list[j] +  "REACHED");
-                // }
-                int index = this.indexOf(newArray[i]);
-                // if(items[i].equals(this.get(j))){
-                    if (index >= 0 && index < size()) {
-                        remove(index);
-                    }
-                    // j--;
-                // }
+                if (newArray[i] == list[j]) {
+                    remove(j);
+                    j--;
+                }
             }
         }
      }
