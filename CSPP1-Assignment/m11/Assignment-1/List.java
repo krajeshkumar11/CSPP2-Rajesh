@@ -355,8 +355,7 @@ public class List {
      *
      * @param      items  The items
      */
-    public void removeAll(int[] items)
-    {
+    public void removeAll(int[] items) {
         // write the logic
         for (int i = 0; i < items.length ; i++ ) {
             for (int j = 0; j < size ; j++ ) {
@@ -378,8 +377,7 @@ public class List {
 
      @return     { description_of_the_return_value }
     */
-    public List subList(int startIndex, int endIndex)
-    {
+    public List subList(int startIndex, int endIndex) {
         // write the logic for subListpl
         List newlist = new List();
         if (startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()) {
@@ -400,8 +398,7 @@ public class List {
     /*Returns a boolean indicating whether the parameter
       i.e a List object is exactly matching with the given list or not.
      */
-    public boolean equals(List listdata)
-    {
+    public boolean equals(List listdata) {
         for (int i = 0; i < listdata.size();i++ ) {
             if (!contains(listdata.get(i))) {
                 return false;
@@ -410,8 +407,7 @@ public class List {
         return true;
     }
     /*Removes all the elements from list*/
-    public void clear()
-    {
+    public void clear() {
         // write the logic for clear.
         list = new int[10];
         size = 0;
