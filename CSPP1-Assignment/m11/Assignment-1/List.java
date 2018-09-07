@@ -106,11 +106,11 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
-        if(size == list.length) {
+        if (size == list.length) {
             resize();
             add(item);
             // list[size++] = item;
-        }else{
+        } else {
             list[size++] = item;
         }
     }
@@ -196,13 +196,13 @@ public class List {
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
-        if(index >= 0 && index < size) {
+        if (index >= 0 && index < size) {
             for (int i = index; i < size - 1; i++ ) {
                 list[i] = list[i + 1];
             }
             list[size - 1] = 0;
             size--;
-        }else{
+        } else {
             System.out.println("Invalid Position Exception");
         }
     }
@@ -222,7 +222,7 @@ public class List {
      */
     public int get(int index) {
         // Replace the code below to write the code for get
-        if(index > -1 && index < size) {
+        if (index > -1 && index < size) {
             return list[index];
         }
         return -1;
@@ -249,7 +249,7 @@ public class List {
         String cmm = ",";
         for ( int i = 0; i < size ; i++ ) {
             str += Integer.toString(list[i]);
-            if(i < size - 1) {
+            if (i < size - 1) {
                 str += cmm;
             }
         }
@@ -282,7 +282,7 @@ public class List {
     public int indexOf(int item) {
         // Replace the code below
         for (int i = 0; i < size ; i++ ) {
-            if(list[i] == item) {
+            if (list[i] == item) {
                 return i;
             }
         }
@@ -326,7 +326,7 @@ public class List {
     public int count(int item) {
         int count = 0;
         for (int i = 0; i < size; i++ ) {
-            if(list[i] == item) {
+            if (list[i] == item) {
                 count++;
             }
         }
@@ -340,13 +340,13 @@ public class List {
      * @param      item   The item
      */
     public void add(int index, int item) {
-        if(index >= 0) {
+        if (index >= 0) {
             for (int i = size; i > index  ;i-- ) {
                 list[i] = list[i - 1];
             }
             list[index] = item;
             size++;
-        }else{
+        } else {
             System.out.println("Negative Index Exception");
         }
     }
@@ -360,7 +360,7 @@ public class List {
         // write the logic
         for (int i = 0; i < items.length ; i++ ) {
             for (int j = 0; j < size ; j++ ) {
-                if(items[i] == list[j]) {
+                if (items[i] == list[j]) {
                     remove(j);
                     // System.out.println(toString());
                 }
@@ -382,7 +382,7 @@ public class List {
     {
         // write the logic for subListpl
         List newlist = new List();
-        if(startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()) {
+        if (startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()) {
             // E[] newint = ((E[])new Object[endIndex - startIndex]);
             int count = 0;
             for (int i = startIndex; i < endIndex ; i++ ) {
@@ -390,10 +390,10 @@ public class List {
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
             return newlist;
-        }else if(startIndex < 0 || endIndex < 0 || endIndex > size()) {
+        }else if (startIndex < 0 || endIndex < 0 || endIndex > size()) {
             System.out.println("Index Out of Bounds Exception");
             return null;
-        }else{
+        } else {
             return newlist;
         }
     }
@@ -403,7 +403,7 @@ public class List {
     public boolean equals(List listdata)
     {
         for (int i = 0; i < listdata.size();i++ ) {
-            if(!contains(listdata.get(i))) {
+            if (!contains(listdata.get(i))) {
                 return false;
             }
         }
@@ -433,9 +433,9 @@ public class List {
             switch (tokens[0]) {
                 case "add":
                 String[] position = tokens[1].split(",");
-                if(position.length == 1) {
+                if (position.length == 1) {
                     l.add(Integer.parseInt(position[0]));
-                }else{
+                } else {
                     l.add(Integer.parseInt(position[0]), Integer.parseInt(position[1]));
                 }
 
@@ -465,7 +465,7 @@ public class List {
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
                 case "addAll":
-                if(tokens.length == 2) {
+                if (tokens.length == 2) {
                     l.addAll(l.convertToInt(tokens[1]));
                 }
                 break;
