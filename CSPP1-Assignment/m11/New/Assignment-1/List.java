@@ -223,8 +223,8 @@ public class List {
      public void removeAll(int[] newArray)
      {
         // write the logic
-        for (int i = 0; i < newArray.length; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int j = 0; j < size(); j++) {
+            for (int i = 0; i < newArray.length; i++) {
                 // if (newArray[i] == list[j]) {
                 //     System.out.println(toString()  + " " + list[j] + " " + j);
                 //     remove(j);
