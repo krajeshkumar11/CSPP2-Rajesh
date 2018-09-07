@@ -219,6 +219,8 @@ public class List<E> {
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
             return newlist;
+        }else{
+            System.out.println("Index Out of Bounds Exception");
         }
         return null;
     }

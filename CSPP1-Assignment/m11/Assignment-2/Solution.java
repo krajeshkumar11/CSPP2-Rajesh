@@ -95,7 +95,7 @@ public class Solution {
                     if (tokens.length != 2) break;
                     String[] arrstring3 = tokens[1].split(",");
                     List object = l.subList(Integer.parseInt(arrstring3[0]), Integer.parseInt(arrstring3[1]));
-                    if (object != null) 
+                    if (object != null)
                         System.out.println(object);
                     break;
                 }
@@ -115,7 +115,7 @@ public class Solution {
                 default:
                 break;
             }
-        }	
+        }
 	}
 	public static void executeListDouble(Scanner stdin) {
 		List<Double> l = new List();
@@ -183,7 +183,7 @@ public class Solution {
                     if (tokens.length != 2) break;
                     String[] arrstring3 = tokens[1].split(",");
                     List object = l.subList(Integer.parseInt(arrstring3[0]), Integer.parseInt(arrstring3[1]));
-                    if (object != null) 
+                    if (object != null)
                         System.out.println(object);
                     break;
                 }
@@ -271,7 +271,7 @@ public class Solution {
                     if (tokens.length != 2) break;
                     String[] arrstring3 = tokens[1].split(",");
                     List object = l.subList(Integer.parseInt(arrstring3[0]), Integer.parseInt(arrstring3[1]));
-                    if (object != null) 
+                    if (object != null)
                         System.out.println(object);
                     break;
                 }
@@ -291,7 +291,7 @@ public class Solution {
                 default:
                 break;
             }
-        }	
+        }
 	}
 
     public static void executeListString(Scanner stdin) {
@@ -353,7 +353,7 @@ public class Solution {
                     if (tokens.length != 2) break;
                     String[] arrstring3 = tokens[1].split(",");
                     List object = l.subList(Integer.parseInt(arrstring3[0]), Integer.parseInt(arrstring3[1]));
-                    if (object != null) 
+                    if (object != null)
                         System.out.println(object);
                     break;
                 }
@@ -373,7 +373,7 @@ public class Solution {
                 default:
                 break;
             }
-        }	
+        }
 	}
 
 	public static void executeListStudent(Scanner stdin) {
@@ -424,7 +424,7 @@ public class Solution {
                         String[] t1 = tokens[1].split(",");
                         Student[] students = new Student[t1.length];
                         for (int i = 0; i < t1.length ;i++) {
-                        	students[i] = new Student(t1[i]);	
+                        	students[i] = new Student(t1[i]);
                         }
                         l.addAll(students);
                     }
@@ -434,7 +434,7 @@ public class Solution {
                         String[] t1 = tokens[1].split(",");
 						Student[] students = new Student[t1.length];
 						for (int i = 0; i < t1.length ;i++) {
-							students[i] = new Student(t1[i]);	
+							students[i] = new Student(t1[i]);
 						}
                         l.removeAll(students);
                     }
@@ -443,7 +443,7 @@ public class Solution {
                     if (tokens.length != 2) break;
                     String[] arrstring3 = tokens[1].split(",");
                     List object = l.subList(Integer.parseInt(arrstring3[0]), Integer.parseInt(arrstring3[1]));
-                    if (object != null) 
+                    if (object != null)
                         System.out.println(object);
                     break;
                 }
@@ -463,7 +463,7 @@ public class Solution {
                 default:
                 break;
             }
-        }	
+        }
 	}
 
 	public static void main(String[] args) {
