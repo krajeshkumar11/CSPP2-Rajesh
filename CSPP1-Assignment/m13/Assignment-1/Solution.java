@@ -9,8 +9,17 @@ import java.util.Arrays;
 class Set {
     //your code goes here...
     //Good luck :-)
-    private int[] set;// data
+    /**
+     * Constructs the object.
+     */
+    private int[] set;
+    /**
+     * Constructs the object.
+     */
     private int size;
+    /**
+     * Constructs the object.
+     */
     private static final int DEFAULTSIZE = 10;
     /**
      * Constructs the object.
