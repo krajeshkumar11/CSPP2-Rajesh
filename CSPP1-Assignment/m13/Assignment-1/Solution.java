@@ -70,7 +70,9 @@ class Set {
         if(size() == set.length){
             resize();
         }
-        set[size++] = item;
+        if(!this.contains(item)){
+            set[size++] = item;
+        }
     }
 
     /**
