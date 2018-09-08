@@ -35,9 +35,9 @@ class Set {
      * @return     { description_of_the_return_value }
      */
     public boolean contains(int item) {
-        if(size() > 0) {
+        if (size() > 0) {
             for (int i = 0; i < size(); i++) {
-                if(item == this.get(i)) {
+                if (item == this.get(i)) {
                     return true;
                 }
             }
@@ -54,7 +54,7 @@ class Set {
         String str = "{";
         for (int i = 0; i < size(); i++) {
             str += set[i];
-            if(i < size() - 1) {
+            if (i < size() - 1) {
                 str += ", ";
             }
         }
@@ -67,10 +67,10 @@ class Set {
      * @param      item  The item
      */
     public void add(int item) {
-        if(size() == set.length) {
+        if (size() == set.length) {
             resize();
         }
-        if(!this.contains(item)) {
+        if (!this.contains(item)) {
             set[size++] = item;
         }
     }
@@ -103,12 +103,12 @@ class Set {
      * @return     { description_of_the_return_value }
      */
     public int get(int index) {
-        if(index < size()) {
+        if (index < size()) {
             return set[index];
         }
         return -1;
         // for (int i = 0; i < size(); i++) {
-        //     if(set[i] == item){
+        //     if (set[i] == item){
         //         return set[i];
         //     }
         // }
@@ -125,7 +125,7 @@ class Set {
     public Set intersection(Set other) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
-            if(other.contains(this.get(i)) == true) {
+            if (other.contains(this.get(i)) == true) {
                 newSet.add(this.get(i));
             }
         }
@@ -143,7 +143,7 @@ class Set {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
             for (int j = 0; j < items.length; j++) {
-                if(items[j] == this.get(i)) {
+                if (items[j] == this.get(i)) {
                     newSet.add(this.get(i));
                 }
             }
@@ -159,7 +159,7 @@ class Set {
      * @return     { description_of_the_return_value }
      */
     public int[][] cartesianProduct(Set set) {
-        if(this.size() > 0 && set.size() > 0) {
+        if (this.size() > 0 && set.size() > 0) {
             int[][] cp = new int[this.size() * set.size()][2];
             int row = 0;
             int col = 0;
