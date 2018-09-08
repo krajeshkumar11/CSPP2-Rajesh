@@ -159,6 +159,22 @@ class Set {
      * @return     { description_of_the_return_value }
      */
     public int[][] cartesianProduct(Set set){
+        if(this.size() > 0 && set.size() > 0){
+            int[][] cp = new int[this.size() * set.size()][2];
+            int row = 0;
+            int col = 0;
+            for (int i = 0; i < this.size(); i++) {
+                // cp[i][j] = this.get(i);
+                for (int j = 0; j < set.size(); j++) {
+                    // System.out.println(i + "I");
+                    // System.out.println(j + "J");
+                    col = 0;
+                    cp[row][col++] = this.get(i);
+                    cp[row++][col++] = set.get(j);
+                }
+            }
+            return cp;
+        }
         return null;
     }
 }
