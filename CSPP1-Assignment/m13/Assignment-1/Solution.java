@@ -36,8 +36,7 @@ class Set {
      */
     public boolean contains(int item) {
         if(size() > 0) {
-            for (int i = 0; i < size(); i++)
-            {
+            for (int i = 0; i < size(); i++) {
                 if(item == this.get(i)) {
                     return true;
                 }
@@ -55,8 +54,7 @@ class Set {
         String str = "{";
         for (int i = 0; i < size(); i++) {
             str += set[i];
-            if(i < size() - 1)
-            {
+            if(i < size() - 1) {
                 str += ", ";
             }
         }
@@ -127,8 +125,7 @@ class Set {
     public Set intersection(Set other) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
-            if(other.contains(this.get(i)) == true)
-            {
+            if(other.contains(this.get(i)) == true) {
                 newSet.add(this.get(i));
             }
         }
@@ -145,8 +142,7 @@ class Set {
     public Set retainAll(int[] items) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
-            for (int j = 0; j < items.length; j++)
-            {
+            for (int j = 0; j < items.length; j++) {
                 if(items[j] == this.get(i)) {
                     newSet.add(this.get(i));
                 }
@@ -167,8 +163,7 @@ class Set {
             int[][] cp = new int[this.size() * set.size()][2];
             int row = 0;
             int col = 0;
-            for (int i = 0; i < this.size(); i++)
-            {
+            for (int i = 0; i < this.size(); i++) {
                 // cp[i][j] = this.get(i);
                 for (int j = 0; j < set.size(); j++) {
                     // System.out.println(i + "I");
@@ -229,8 +224,7 @@ public final class Solution {
             // split the line using space
             String[] tokens = line.split(" ");
             // based on the list operation invoke the corresponding method
-            switch (tokens[0])
-            {
+            switch (tokens[0]) {
             case "size":
                 System.out.println(s.size());
                 break;
@@ -244,9 +238,7 @@ public final class Solution {
                 int[] intArray = intArray(tokens[1]);
                 if (intArray.length == 1) {
                     s.add(intArray[0]);
-                }
-                else
-                {
+                } else {
                     s.add(intArray);
                 }
                 break;
