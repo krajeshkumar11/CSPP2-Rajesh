@@ -20,7 +20,7 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @return     { description_of_the_return_value }
      */
@@ -28,7 +28,7 @@ class Set {
         return size;
     }
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      item  The item
      *
@@ -62,7 +62,7 @@ class Set {
         return str;
     }
     /**
-     * { item_description }
+     * { item_description }.
      *
      * @param      item  The item
      */
@@ -76,7 +76,7 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      */
     public void resize() {
         int[] newset = new int[2 * set.length];
@@ -85,7 +85,7 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      items  The items
      */
@@ -96,7 +96,7 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      index  The index
      *
@@ -116,8 +116,9 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
+     * @param      other  The other
      * @param      set   The set
      *
      * @return     { description_of_the_return_value }
@@ -133,7 +134,7 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      items  The items
      *
@@ -152,25 +153,26 @@ class Set {
     }
 
     /**
-     * { function_description }
+     * { function_description }.
      *
+     * @param      other  The other
      * @param      set   The set
      *
      * @return     { description_of_the_return_value }
      */
-    public int[][] cartesianProduct(final Set set) {
-        if (this.size() > 0 && set.size() > 0) {
-            int[][] cp = new int[this.size() * set.size()][2];
+    public int[][] cartesianProduct(final Set other) {
+        if (this.size() > 0 && other.size() > 0) {
+            int[][] cp = new int[this.size() * other.size()][2];
             int row = 0;
             int col = 0;
             for (int i = 0; i < this.size(); i++) {
                 // cp[i][j] = this.get(i);
-                for (int j = 0; j < set.size(); j++) {
+                for (int j = 0; j < other.size(); j++) {
                     // System.out.println(i + "I");
                     // System.out.println(j + "J");
                     col = 0;
                     cp[row][col++] = this.get(i);
-                    cp[row++][col++] = set.get(j);
+                    cp[row++][col++] = other.get(j);
                 }
             }
             return cp;
