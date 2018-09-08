@@ -25,7 +25,7 @@ class Set {
      * Constructs the object.
      */
 
-    public Set() {
+    Set() {
         set = new int[DEFAULTSIZE];
         size = 0;
     }
