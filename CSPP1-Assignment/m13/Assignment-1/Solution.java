@@ -34,7 +34,7 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public boolean contains(int item) {
+    public boolean contains(final int item) {
         if (size() > 0) {
             for (int i = 0; i < size(); i++) {
                 if (item == this.get(i)) {
@@ -66,7 +66,7 @@ class Set {
      *
      * @param      item  The item
      */
-    public void add(int item) {
+    public void add(final int item) {
         if (size() == set.length) {
             resize();
         }
@@ -89,7 +89,7 @@ class Set {
      *
      * @param      items  The items
      */
-    public void add(int[] items) {
+    public void add(final int[] items) {
         for (int item : items) {
             add(item);
         }
@@ -102,7 +102,7 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public int get(int index) {
+    public int get(final int index) {
         if (index < size()) {
             return set[index];
         }
@@ -122,7 +122,7 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public Set intersection(Set other) {
+    public Set intersection(final Set other) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
             if (other.contains(this.get(i)) == true) {
@@ -139,7 +139,7 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public Set retainAll(int[] items) {
+    public Set retainAll(final int[] items) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
             for (int j = 0; j < items.length; j++) {
@@ -158,7 +158,7 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public int[][] cartesianProduct(Set set) {
+    public int[][] cartesianProduct(final Set set) {
         if (this.size() > 0 && set.size() > 0) {
             int[][] cp = new int[this.size() * set.size()][2];
             int row = 0;
