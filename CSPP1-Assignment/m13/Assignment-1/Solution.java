@@ -11,7 +11,7 @@ class Set {
     //Good luck :-)
     private int[] set;
     private int size;
-    public final int DEFAULTSIZE = 10;
+    private static final int DEFAULTSIZE = 10;
     /**
      * Constructs the object.
      */
