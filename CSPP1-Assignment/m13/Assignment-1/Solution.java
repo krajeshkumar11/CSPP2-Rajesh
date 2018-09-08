@@ -9,7 +9,7 @@ import java.util.Arrays;
 class Set {
     //your code goes here...
     //Good luck :-)
-    private int[] set;
+    private int[] set;// data
     private int size;
     private static final int DEFAULTSIZE = 10;
     /**
