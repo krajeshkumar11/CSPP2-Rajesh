@@ -11,11 +11,12 @@ class Set {
     //Good luck :-)
     private int[] set;
     private int size;
+    public final int DEFAULTSIZE = 10;
     /**
      * Constructs the object.
      */
     public Set() {
-        set = new int[10];
+        set = new int[DEFAULTSIZE];
         size = 0;
     }
 
@@ -119,14 +120,13 @@ class Set {
      * { function_description }.
      *
      * @param      other  The other
-     * @param      set   The set
      *
      * @return     { description_of_the_return_value }
      */
     public Set intersection(final Set other) {
         Set newSet = new Set();
         for (int i = 0; i < size(); i++) {
-            if (other.contains(this.get(i)) == true) {
+            if (other.contains(this.get(i))) {
                 newSet.add(this.get(i));
             }
         }
@@ -156,7 +156,6 @@ class Set {
      * { function_description }.
      *
      * @param      other  The other
-     * @param      set   The set
      *
      * @return     { description_of_the_return_value }
      */
