@@ -384,7 +384,6 @@ public final class Solution {
             case "last":
                 if(s.size() == 0){
                     System.out.println("Set Empty Exception");
-                    break;
                 }
                 System.out.println(s.last());
                 break;
