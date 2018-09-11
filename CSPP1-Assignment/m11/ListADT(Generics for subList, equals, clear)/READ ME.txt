@@ -1,0 +1,8 @@
+In solution updated code for methods(subList, equals, clear) in swith-case.
+Following are detailes of test cases used.
+TestCase No:        Type:
+1,  2               Integer
+3,  4               Character
+5                   Double
+6                   Float
+7                   String

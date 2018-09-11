@@ -1,0 +1,21 @@
+13
+add 5
+add -1
+size
+print
+add 0
+add 99
+print
+remove 1
+size
+print
+indexOf -1
+get 2
+contains 5
+add 99
+print
+count 99
+add 1 77
+print
+addAll [9,99,0,999,9999]
+print

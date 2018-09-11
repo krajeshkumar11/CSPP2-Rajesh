@@ -207,20 +207,17 @@ public class List<E> {
      indicates the startIndex and the second parameter
      indicates the endIndex.
      */
-    public List subList(int startIndex, int endIndex)
+    public E[] subList(int startIndex, int endIndex)
     {
         // write the logic for subListpl
         if(startIndex >= 0 && endIndex >= 0 && startIndex < endIndex && endIndex <= size()){
-            List<E> newlist = new List();
-            // E[] newint = ((E[])new Object[endIndex - startIndex]);
+            E[] newint = ((E[])new Object[endIndex - startIndex]);
             int count = 0;
             for (int i = startIndex; i < endIndex ; i++ ) {
-                newlist.add(get(i));
+                newint[count++] = get(i);
                 // System.out.println(i + " " + endIndex + " " + newint[i] + " " + size());
             }
-            return newlist;
-        }else{
-            System.out.println("Index Out of Bounds Exception");
+            return newint;
         }
         return null;
     }
@@ -229,12 +226,19 @@ public class List<E> {
      */
     public boolean equals(List<E> listdata)
     {
-        for (int i = 0; i < listdata.size();i++ ) {
-            if(!contains(listdata.get(i))){
-                return false;
-            }
-        }
-        return true;
+        // Replace the code below
+        // if(size() == listdata.size()){
+            // for (int i = 0; i < size();i++ ) {
+                for (int i = 0; i < listdata.size();i++ ) {
+                    if(!contains(listdata.get(i))){
+                        return false;
+                    }
+                }
+            // }
+            return true;
+        // }else{
+        //     return false;
+        // }
     }
     /*Removes all the elements from list*/
     public void clear()

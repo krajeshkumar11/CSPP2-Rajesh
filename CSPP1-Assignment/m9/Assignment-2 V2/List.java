@@ -60,6 +60,9 @@ public class List {
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
+
+
+
     public List() {
 
         // what are the two variables to be initialized here?
@@ -67,14 +70,32 @@ public class List {
         // What should be the default values?
         // In the case of the list, it should be empty but
         // it should be initialized with an array size like 10
+        list = new int[10];
 
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-        list = new int[10];
         size = 0;
+    }
 
+    /*
+     * Overloaded constructor with list capacity as argument
+     * The default constructor sets the list capacity to 10
+     * So, adding an item when the list size is 10
+     * raises a Index Out of Bounds Exception
+     * There will be some clients of the ADT that will require
+     * the list to contain n elements which is known
+     * at the time of creating the list.
+     *
+     * The overloaded constructor is a way to initialize a list with
+     * a list capacity of n items where n is given as an argument to
+     * constructor.
+     *
+     */
+    public List(int capacity) {
+        size = 0;
+        list = new int[capacity];
     }
 
     /*
@@ -90,8 +111,53 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
-        list[size] = item;
-        size++;
+        if(size == list.length){
+            resize();
+            add(item);
+        }else{
+            list[size++] = item;
+        }
+    }
+
+    /*
+     *
+     * Resize the list
+     * Sometimes the clients of the ADT won't know the expected list capacity
+     * To solve this the list has to grow dynamically
+     * when the maximum capacity is reached and there is no room to add items.
+     * So, how do we dynamically resize the list?
+     * Java doesn't support resize of array. Here are some options.
+     *
+     * Option 1
+     * Create a new array of the desired size,
+     * and copy the contents from the original array to the new array,
+     * using java.lang.System.arraycopy(...);
+     *
+     * Option 2
+     * Use java.util.Arrays.copyOf(...) methods which returns a bigger array,
+     * with the contents of the original array.
+     *
+     * TODO
+     * Create a method called resize(). Resize should create an new array that is
+     * double the size of the old array.
+     * Then copy the contents of the old array to the new one.
+     *
+     * When should the resize method be invoked and from where?
+     * Will the client invoke resize or is it internal to List class?
+     * Should the resize be public method or private?
+     * Should the resize method return any values?
+     * You know enough of Object Oriented Programming to answer these questions :-)
+     *
+     */
+
+    // todo create resize method
+    private void resize(){
+        int[] newlist = new int[list.length * 2];
+        System.arraycopy(list, 0, newlist, 0, list.length);
+        // for (int i = 0; i < list.length ; i++ ) {
+        //     newlist[i] = list[i];
+        // }
+        list = newlist;
     }
 
     /*
@@ -102,7 +168,6 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
-        // replace the code below to implement the size method
         return size;
     }
 
@@ -126,19 +191,16 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-    // size = 10
-    // 8 < 9
-    // [1,2,3,0,0,0,0,0,11,14]
+
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
-        if(index >= 0 && index < size){
-            for (int i = index; i < size - 1; i++ ) {
+        if(index >= 0 && index < size) {
+            for(int i = index; i < size - 1; i++) {
                 list[i] = list[i + 1];
             }
-            list[size - 1] = 0;
             size--;
-        }else{
+        } else {
             System.out.println("Invalid Position Exception");
         }
     }
@@ -155,11 +217,11 @@ public class List {
      * number of items in the list? Would size variable be useful?
      */
     public int get(int index) {
-        // Replace the code below to write the code for get
-        if(index > -1 && index < size){
+        if(index < 0 || index >= size) {
+            return -1;
+        } else {
             return list[index];
         }
-        return -1;
     }
 
     /*
@@ -183,16 +245,14 @@ public class List {
      *
      */
     public String toString() {
-        // Replace the code below
+        if(size == 0)
+            return "";
         String str = "[";
-        String cmm = ",";
-        for ( int i = 0; i < size ; i++ ) {
-            str += Integer.toString(list[i]);
-            if(i < size - 1){
-                str += cmm;
-            }
+        int i = 0;
+        for(i = 0; i < size - 1; i++) {
+            str = str + list[i] + ",";
         }
-        str += "]";
+        str = str + list[i] + "]";
         return str;
     }
 
@@ -203,8 +263,7 @@ public class List {
      * the item exists and otherwise false
      */
     public boolean contains(int item) {
-        // Replace the code below
-        return indexOf(item) >= 0;
+        return indexOf(item) == -1;
     }
 
     /*
@@ -213,46 +272,11 @@ public class List {
      * or -1 if this list does not contain the element.
      */
     public int indexOf(int item) {
-        // Replace the code below
-        for (int i = 0; i < size ; i++ ) {
-            if(list[i] == item){
+        for(int i = 0; i < size; i++) {
+            if(item == list[i])
                 return i;
-            }
         }
         return -1;
-    }
-
-    public void addAll(int[] arr){
-        for (int i = 0; i < arr.length ; i++ ) {
-            add(arr[i]);
-        }
-    }
-
-    public int[] convertToInt(String str){
-        String[] strArr = str.split(",");
-        int[] intArr = new int[strArr.length];
-        for (int i = 0; i < strArr.length ; i++ ) {
-            intArr[i] = Integer.parseInt(strArr[i]);
-        }
-        return intArr;
-    }
-
-    public int count(int item){
-        int count = 0;
-        for (int i = 0; i < size; i++ ) {
-            if(list[i] == item){
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public void add(int index, int item){
-        for (int i = size; i > index  ;i-- ) {
-            list[i] = list[i - 1];
-        }
-        list[index] = item;
-        size++;
     }
 
 	public static void main(String[] args) {
@@ -270,13 +294,7 @@ public class List {
             // based on the list operation invoke the corresponding method
             switch (tokens[0]) {
                 case "add":
-                String[] position = tokens[1].split(",");
-                if(position.length == 1){
-                    l.add(Integer.parseInt(position[0]));
-                }else{
-                    l.add(Integer.parseInt(position[0]), Integer.parseInt(position[1]));
-                }
-
+                l.add(Integer.parseInt(tokens[1]));
                 break;
                 case "size":
                 // invoke size method and print the list size
@@ -301,12 +319,6 @@ public class List {
                 break;
                 case "contains":
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
-                break;
-                case "addAll":
-                l.addAll(l.convertToInt(tokens[1]));
-                break;
-                case "count":
-                System.out.println(l.count(Integer.parseInt(tokens[1])));
                 break;
             }
         }

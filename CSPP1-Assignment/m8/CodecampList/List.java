@@ -1,7 +1,7 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
 
-public class List {
+public class List implements ListInterface{
 	//Implement all the methods mentioned to build a ListADT
 
     /*
@@ -222,6 +222,42 @@ public class List {
         return -1;
     }
 
+    public int count(int item){
+        int count = 0;
+        for (int i = 0; i < size ; i++ ) {
+            if(list[i] == item){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void add(int index, int item){
+        for (int i = size; i >= index ;i-- ) {
+            list[i] = list[i - 1];
+        }
+        list[index] = item;
+        size++;
+    }
+
+    public void addAll(int[] items){
+        for (int i = 0; i < items.length ; i++ ) {
+            list[size] = items[i];
+            size++;
+        }
+    }
+
+    public int[] strintToIntArr(String str){
+        str = str.replace("[", "");
+        str = str.replace("]", "");
+        String[] stArr = str.split(",");
+        int [] intArr = new int[stArr.length];
+        for (int i = 0; i < stArr.length ; i++ ) {
+            intArr[i] = Integer.parseInt(stArr[i]);
+        }
+        return intArr;
+    }
+
 	public static void main(String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
@@ -237,7 +273,11 @@ public class List {
             // based on the list operation invoke the corresponding method
             switch (tokens[0]) {
                 case "add":
-                l.add(Integer.parseInt(tokens[1]));
+                if(tokens.length == 2){
+                    l.add(Integer.parseInt(tokens[1]));
+                }else{
+                    l.add(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+                }
                 break;
                 case "size":
                 // invoke size method and print the list size
@@ -262,6 +302,12 @@ public class List {
                 break;
                 case "contains":
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
+                break;
+                case "count":
+                System.out.println(l.count(Integer.parseInt(tokens[1])));
+                break;
+                case "addAll":
+                l.addAll(l.strintToIntArr(tokens[1]));
                 break;
             }
         }
