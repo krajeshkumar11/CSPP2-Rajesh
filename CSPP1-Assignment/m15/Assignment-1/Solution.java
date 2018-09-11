@@ -363,6 +363,7 @@ public class Solution {
                 if (items[i] == list[j]) {
                     remove(j);
                     // System.out.println(toString());
+                    j--;
                 }
             }
         }
