@@ -1,7 +1,7 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
 
-public class List implements ListInterface{
+public class List {
 	//Implement all the methods mentioned to build a ListADT
 
     /*
