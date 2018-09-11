@@ -214,9 +214,15 @@ public final class Solution {
         if (s.contains("[")) {
             input = s.substring(1, s.length() - 1);
         }
-        return Arrays.stream(input.split(","))
-               .mapToInt(Integer::parseInt)
-               .toArray();
+        String[] data = input.split(",");
+        int[] intarr = new int[data.length];
+        for (int i = 0; i < intarr.length; i++) {
+            intarr[i] = Integer.parseInt(data[i]);
+        }
+        return intarr;
+        // return Arrays.stream(input.split(","))
+        //        .mapToInt(Integer::parseInt)
+        //        .toArray();
     }
     /**
      * main function to execute test cases.
