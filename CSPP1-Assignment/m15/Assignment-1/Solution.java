@@ -401,12 +401,12 @@ public class Solution {
       i.e a List object is exactly matching with the given list or not.
      */
     public boolean equals(List listdata) {
-        // for (int i = 0; i < listdata.size(); i++) {
-        //     if (!contains(listdata.get(i))) {
-        //         return false;
-        //     }
-        // }
-        return list.toString().equals(listdata.toString());
+        for (int i = 0; i < listdata.size(); i++) {
+            if (!contains(listdata.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
     /*Removes all the elements from list*/
     public void clear() {
