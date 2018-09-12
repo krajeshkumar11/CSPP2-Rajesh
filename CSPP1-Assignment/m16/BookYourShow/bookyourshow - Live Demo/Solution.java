@@ -42,23 +42,29 @@ class BookYourShow{
 
     public void bookAShow(String movie_name, String date, Patron pa, String[] seats){
         Show checkshow = getAShow(movie_name, date);
-        if(checkshow != null){
-            int flag = 0;
-            for (int i = 0; i < seats.length; i++) {
-                for (int j = 0; j < checkshow.seats.length; j++) {
-                    if(seats[i].equals(checkshow.seats[j])){
-                        checkshow.seats[j] = "N/A";
-                        flag = 1;
+        if(allshowscount == 0){
+            System.out.println("No show");
+        }else{
+            if(checkshow != null){
+                int flag = 0;
+                for (int i = 0; i < seats.length; i++) {
+                    for (int j = 0; j < checkshow.seats.length; j++) {
+                        if(seats[i].equals(checkshow.seats[j])){
+                            checkshow.seats[j] = "N/A";
+                            flag = 1;
+                        }
                     }
                 }
-            }
-            for (int p = 0;  p < allshowscount; p++) {
-                if(allshows[p].movie_name.equals(checkshow.movie_name) && allshows[p].date.equals(checkshow.date)){
-                    allshows[p] = checkshow;
+                for (int p = 0;  p < allshowscount; p++) {
+                    if(allshows[p].movie_name.equals(checkshow.movie_name) && allshows[p].date.equals(checkshow.date)){
+                        allshows[p] = checkshow;
+                    }
                 }
-            }
-            if (flag == 1) {
-                allpatrons[allpatronscount++] = pa;
+                if (flag == 1) {
+                    allpatrons[allpatronscount++] = pa;
+                }
+            } else {
+                System.out.println("No show");
             }
         }
     }
