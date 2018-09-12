@@ -19,14 +19,6 @@ class Patron{
         this.patronMobileNo = patronMobileNo;
     }
 }
-class YourShow{
-    Patron patron;
-    Show show;
-    public YourShow(Patron patron, Show show){
-        this.patron = patron;
-        this.show = show;
-    }
-}
 class BookYourShow{
     public Show[] allShows;
     public int allShowsCount;
@@ -39,13 +31,9 @@ class BookYourShow{
         this.bookedShowsCount = 0;
     }
     public void addAShow(Show show){
-        // System.out.println("HI");
         this.allShows[allShowsCount++] = show;
-        // showAll();
     }
     public Show getAShow(String movieName, String showTime){
-        // Show[] presentShows = new Show[allShowsCount];
-        // int count = 0;
         for (int i = 0; i < allShowsCount; i++) {
             // System.out.println(allShows[i]);
             if(allShows[i].movieName.equals(movieName) && allShows[i].showTime.equals(showTime)){
@@ -54,11 +42,6 @@ class BookYourShow{
             }
         }
         return null;
-        // Show[] finalpresentShows = new Show[count];
-        // for (int i = 0; i < presentShows.length; i++) {
-        //     finalpresentShows[i] = presentShows[i];
-        // }
-        // return finalpresentShows;
     }
     public void bookAShow(String movieName, String showTime, Patron pa, String[] seats){
         Show show = getAShow(movieName, showTime);
@@ -82,7 +65,6 @@ class BookYourShow{
         }
     }
     public void printTicket(String movieName, String showTime, String mobileNumber){
-        // showAll();
         Show checkShow = getAShow(movieName, showTime);
         if(checkShow == null){
             System.out.println("Invalid");
@@ -126,9 +108,7 @@ class BookYourShow{
 public class Solution {
     public static String[] stringArray(String tickets){
         tickets = tickets.substring(0, tickets.length() - 1);
-        // System.out.println(tickets);
         String[] stringArr = tickets.split(",");
-        // System.out.println(stringArr[0] + " " + stringArr[1]);
         return stringArr;
     }
     public static void main(final String[] args) {
@@ -139,7 +119,6 @@ public class Solution {
             String[] tokens = scan.nextLine().
                 replace("[", "").replace("]", "").split(",");
             String[] check = tokens[0].split(" ");
-            // System.out.println(check[0]+"RAJESH");
             switch (check[0]) {
                 case "add":
                     int k = 2;
@@ -170,7 +149,6 @@ public class Solution {
                 break;
 
                 case "print":
-                    // System.out.println(check[1]+ " " + tokens[1]+ " " + tokens[2] +"HELLO");
                     bys.printTicket(check[1], tokens[1], tokens[2]);
                 break;
 
@@ -183,38 +161,4 @@ public class Solution {
             }
         }
     }
-    // public static void main(String[] args) {
-    //     Scanner stdin = new Scanner(new BufferedInputStream(System.in));
-    //     BookYourShow bus = new BookYourShow();
-    //     while (stdin.hasNext()) {
-    //         String line = stdin.nextLine();
-    //         // split the line using space
-    //         String[] tokens = line.split("-");
-    //         switch (tokens[0]) {
-    //         case "add":
-    //             // System.out.println(tokens[1]);
-    //             String[] details = tokens[1].split("\\[");
-    //             // System.out.println(details[]);
-    //             String[] showTickets = stringArray(details[1]);
-    //             details = details[0].split(",");
-    //             bus.addAShow(new Show(details[0], details[1], showTickets));
-    //             break;
-    //         case "get":
-    //             // bus.getAShow();
-    //             break;
-    //         case "book":
-    //             // bus.bookAShow();
-    //             break;
-    //         case "print":
-    //             // bus.printTickets();
-    //             break;
-    //         case "removeAMovie":
-    //             // bus.removeAMovie();
-    //             break;
-    //         default:
-    //             break;
-    //         }
-    //     }
-    // }
-
 }
