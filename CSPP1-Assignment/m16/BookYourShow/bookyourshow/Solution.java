@@ -75,7 +75,7 @@ class BookYourShow{
                 }
             }
             if(count == 0){
-                System.out.println("No show");
+                // System.out.println("No show");
             }else{
                 bookedShows[bookedShowsCount++] = pa;
             }
@@ -141,6 +141,7 @@ public class Solution {
             String[] tokens = scan.nextLine().
                 replace("[", "").replace("]", "").split(",");
             String[] check = tokens[0].split(" ");
+            // System.out.println(check[0]+"RAJESH");
             switch (check[0]) {
                 case "add":
                     int k = 2;
