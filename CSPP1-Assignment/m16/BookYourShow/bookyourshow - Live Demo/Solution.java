@@ -32,6 +32,8 @@ class BookYourShow{
     public BookYourShow(){
         allshows = new Show[10];
         allshowscount = 0;
+        allpatrons = new Patron[10];
+        allpatronscount = 0;
     }
 
     public void addAShow(Show show){
