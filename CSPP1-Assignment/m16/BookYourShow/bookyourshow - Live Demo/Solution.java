@@ -75,12 +75,20 @@ class BookYourShow{
     public void printTicket(String movie_name,  String date, String phoneNo){
         Show checkshow = getAShow(movie_name, date);
         if(checkshow != null){
+            int flag = 0;
             for (int i = 0; i < allpatronscount; i++) {
                 if(allpatrons[i].phoneNo.equals(phoneNo)){
-                    System.out.println(phoneNo + " " +movie_name + " " + date);
+                    flag = 1;
                     break;
                 }
             }
+            if(flag == 1){
+                System.out.println(phoneNo + " " +movie_name + " " + date);
+            }else{
+                System.out.println("Invalid");
+            }
+        }else{
+            System.out.println("Invalid");
         }
     }
 
@@ -144,7 +152,7 @@ public final class Solution {
                 case "get":
                     Show show = bys.getAShow(check[1], tokens[1]);
                     if (show != null) {
-                       System.out.println(show);
+                       System.out.println(show.movie_name + "," + show.date);
                     } else {
                         System.out.println("No show");
                     }
