@@ -74,9 +74,7 @@ class BookYourShow{
                     }
                 }
             }
-            if(count == 0){
-                // System.out.println("No show");
-            }else{
+            if(count != 0){
                 bookedShows[bookedShowsCount++] = pa;
             }
         }else{
