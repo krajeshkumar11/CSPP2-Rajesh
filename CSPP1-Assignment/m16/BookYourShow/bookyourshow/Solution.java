@@ -64,10 +64,13 @@ class BookYourShow{
         Show show = getAShow(movieName, showTime);
         if(show != null){
             int count = 0;
-            for (String ticket: seats) {
-                for (int i = 0;  i < show.seats.length; i++) {
-                    if(show.seats[i].equals(ticket)){
-                        count++;
+            for (int p = 0; p < allShowsCount; p++) {
+                for (String ticket: seats) {
+                    for (int i = 0;  i < show.seats.length; i++) {
+                        if(allShows[p].seats[i].equals(ticket)){
+                            // allShows[p].seats[i] = "N/A";
+                            count++;
+                        }
                     }
                 }
             }
