@@ -66,7 +66,7 @@ class BookYourShow{
             int count = 0;
             for (int p = 0; p < allShowsCount; p++) {
                 for (String ticket: seats) {
-                    for (int i = 0;  i < show.seats.length; i++) {
+                    for (int i = 0;  i < allShows[p].seats.length; i++) {
                         if(allShows[p].seats[i].equals(ticket)){
                             // allShows[p].seats[i] = "N/A";
                             count++;
