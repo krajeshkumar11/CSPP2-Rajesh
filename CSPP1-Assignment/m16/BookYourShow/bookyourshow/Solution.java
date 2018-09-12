@@ -72,12 +72,12 @@ class BookYourShow{
                 }
             }
             if(count == 0){
-                System.out.println("No Show");
+                System.out.println("No show");
             }else{
                 bookedShows[bookedShowsCount++] = pa;
             }
         }else{
-            System.out.println("No Show");
+            System.out.println("No show");
         }
     }
     public void printTicket(String movieName, String showTime, String mobileNumber){
