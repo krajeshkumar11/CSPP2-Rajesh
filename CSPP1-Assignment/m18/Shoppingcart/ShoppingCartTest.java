@@ -19,12 +19,14 @@ class ShoppingCart{
     public int cartitemscount;
     public double couponcode;
     public double tax;
+    public double cartTotal;
     ShoppingCart(){
         storeitems = new Item[20];
         cartitems = new Item[10];
         cartitemscount = 0;
         couponcode = 0;
         tax = 15;
+        cartTotal = 0;
     }
 
     public void addToStore(Item item){
@@ -94,15 +96,15 @@ class ShoppingCart{
     }
 
     public double getTotalAmount(){
-        double total = 0;
+        cartTotal = 0;
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
                 if(cartitems[i].name.equals(storeitems[j].name)){
-                    total += storeitems[j].price * cartitems[i].quantity;
+                    cartTotal += storeitems[j].price * cartitems[i].quantity;
                 }
             }
         }
-        return total;
+        return cartTotal;
     }
 
     public double getPayableAmount(){
@@ -113,7 +115,10 @@ class ShoppingCart{
     }
 
     public void applyCoupon(String coupon){
-        this.couponcode = Double.parseDouble(coupon.substring(3, coupon.length() - 1));
+        if (coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")) {
+            this.couponcode = Double.parseDouble(coupon.substring(3, coupon.length()));
+            this.cartTotal -= couponcode;
+        }
     }
 
     public void printInvoice(){
@@ -129,6 +134,7 @@ class ShoppingCart{
         System.out.println("totalAmount: " + getTotalAmount());
         System.out.println("Total:" + getTotalAmount());
         System.out.println("Disc%:" + couponcode);
+        // System.out.println(getTotalAmount() + " " + couponcode + "COUPEN");
         System.out.println("Tax:" + ((getTotalAmount()-couponcode) / 100) * tax);
         System.out.println("Payable amount: " + getPayableAmount());
     }
@@ -168,6 +174,9 @@ public class ShoppingCartTest{
                 break;
                 case "print":
                 scart.printInvoice();
+                break;
+                case "coupon":
+                scart.applyCoupon(options[1]);
                 break;
             }
         }
