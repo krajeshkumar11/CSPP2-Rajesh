@@ -35,11 +35,11 @@ class Item{
 
 class ShoppingCart{
 
-    public Item[] catalog;
-    public int catalogcount;
-    public Item[] cart;
-    public int cartcount;
-    public double discount;
+    private Item[] catalog;
+    private int catalogcount;
+    private Item[] cart;
+    private int cartcount;
+    private double discount;
     public ShoppingCart(){
         catalog = new Item[10];
         catalogcount = 0;
