@@ -118,7 +118,7 @@ class ShoppingCart{
 
     public void printInvoice(){
         // System.out.println("HI");
-        System.out.println("Name    quantity     Price");
+        System.out.println("Name    quantity    Price");
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
                 if(cartitems[i].name.equals(storeitems[j].name)){
