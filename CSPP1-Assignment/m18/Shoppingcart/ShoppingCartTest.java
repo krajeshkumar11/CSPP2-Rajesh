@@ -2,13 +2,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Item{
-    public String name;
-    public int quantity;
-    public double price;
+    private String name;
+    private int quantity;
+    private double price;
     Item(String name, int quantity, double price){
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public double getPrice(){
+        return price;
     }
 }
 
@@ -32,8 +48,8 @@ class ShoppingCart{
     public void addToStore(Item item){
         int flag = 0;
         for (int j = 0; j < storeitemscount; j++) {
-            if(item.name.equals(storeitems[j].name)){
-                storeitems[j].quantity += item.quantity;
+            if(item.getName().equals(storeitems[j].getName())){
+                storeitems[j].setQuantity(item.getQuantity());
                 flag = 1;
             }
         }
@@ -46,8 +62,8 @@ class ShoppingCart{
         int flag = 0, position = 0;
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
-                if(cartitems[i].name.equals(storeitems[j].name) && item.name.equals(cartitems[i].name)){
-                    if(cartitems[i].quantity > item.quantity){
+                if(cartitems[i].getName().equals(storeitems[j].getName()) && item.getName().equals(cartitems[i].getName())){
+                    if(cartitems[i].getQuantity() > item.getQuantity()){
                         flag = 1;
                         position = 1;
                     }
@@ -55,7 +71,7 @@ class ShoppingCart{
             }
         }
         if(flag == 1){
-            cartitems[position].quantity += item.quantity;
+            cartitems[position].setQuantity(cartitems[position].getQuantity() + item.getQuantity());
         } else {
             cartitems[cartitemscount++] = item;
         }
@@ -63,24 +79,24 @@ class ShoppingCart{
 
     public void showCatalog(){
         for (int i = 0; i < storeitemscount; i++) {
-            System.out.println(storeitems[i].name + " " + storeitems[i].quantity + " " + storeitems[i].price);
+            System.out.println(storeitems[i].getName() + " " + storeitems[i].getQuantity() + " " + storeitems[i].getPrice());
         }
     }
 
     public void showCart(){
         for (int i = 0; i < cartitemscount; i++) {
-            System.out.println(cartitems[i].name + " " + cartitems[i].quantity);
+            System.out.println(cartitems[i].getName() + " " + cartitems[i].getQuantity());
         }
     }
 
     public void removeFromCart(Item item){
-        // System.out.println("RAJESH" + item.name+ " "+ item.quantity);
+        // System.out.println("RAJESH" + item.getName()+ " "+ item.getQuantity());
         int position = 0;
         int flag = 0;
         for (int i = 0; i < cartitemscount; i++) {
-            if (cartitems[i].name.equals(item.name)) {
-                cartitems[i].quantity -= item.quantity;
-                if(cartitems[i].quantity == 0){
+            if (cartitems[i].getName().equals(item.getName())) {
+                cartitems[i].setQuantity(cartitems[i].getQuantity() - item.getQuantity());
+                if(cartitems[i].getQuantity() == 0){
                     flag = 1;
                     position = i;
                 }
@@ -99,8 +115,8 @@ class ShoppingCart{
         cartTotal = 0;
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
-                if(cartitems[i].name.equals(storeitems[j].name)){
-                    cartTotal += storeitems[j].price * cartitems[i].quantity;
+                if(cartitems[i].getName().equals(storeitems[j].getName())){
+                    cartTotal += storeitems[j].getPrice() * cartitems[i].getQuantity();
                 }
             }
         }
@@ -126,8 +142,8 @@ class ShoppingCart{
         System.out.println("Name   quantity   Price");
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
-                if(cartitems[i].name.equals(storeitems[j].name)){
-                   System.out.println(cartitems[i].name + " " + cartitems[i].quantity + " " + storeitems[j].price);
+                if(cartitems[i].getName().equals(storeitems[j].getName())){
+                   System.out.println(cartitems[i].getName() + " " + cartitems[i].getQuantity() + " " + storeitems[j].getPrice());
                 }
             }
         }
