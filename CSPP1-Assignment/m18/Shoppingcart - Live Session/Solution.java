@@ -53,7 +53,16 @@ class ShoppingCart{
     }
 
     public void addToCart(Item item){
-        cart[cartcount++] = item;
+        int flag = 0;
+        for (int i = 0; i < cartcount; i++) {
+            if(cart[i].getName().equals(item.getName())){
+                cart[i].setQuantity(cart[i].getQuantity() + item.getQuantity());
+                flag = 1;
+            }
+        }
+        if(flag != 1){
+            cart[cartcount++] = item;
+        }
     }
 
     public void removeFromCart(Item item){
@@ -109,10 +118,12 @@ class ShoppingCart{
     }
 
     public void applyCoupon(String coupon){
-        if(coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")){
-            this.discount = Double.parseDouble(coupon.substring(3, coupon.length()));
-        } else {
-            System.out.println("Invalid coupon");
+        if(this.discount == 0.0){
+            if(coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")){
+                this.discount = Double.parseDouble(coupon.substring(3, coupon.length()));
+            } else {
+                System.out.println("Invalid coupon");
+            }
         }
     }
 
