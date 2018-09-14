@@ -67,7 +67,7 @@ class ShoppingCart{
 
     public void showCart(){
         for (int i = 0; i < cartitemscount; i++) {
-            System.out.println(cartitems[i].name + " : " + cartitems[i].quantity);
+            System.out.println(cartitems[i].name + " " + cartitems[i].quantity);
         }
     }
 
@@ -118,7 +118,7 @@ class ShoppingCart{
 
     public void printInvoice(){
         // System.out.println("HI");
-        System.out.println("Name    quantity    Price");
+        System.out.println("Name   quantity   Price");
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
                 if(cartitems[i].name.equals(storeitems[j].name)){
@@ -127,10 +127,10 @@ class ShoppingCart{
             }
         }
         System.out.println("totalAmount: " + getTotalAmount());
-        System.out.println("Total: " + getTotalAmount());
-        System.out.println("Disc%: " + couponcode);
-        System.out.println("Tax: " + ((getTotalAmount()-couponcode) / 100) * tax);
-        System.out.println("Total: " + getPayableAmount());
+        System.out.println("Total:" + getTotalAmount());
+        System.out.println("Disc%:" + couponcode);
+        System.out.println("Tax:" + ((getTotalAmount()-couponcode) / 100) * tax);
+        System.out.println("Payable amount: " + getPayableAmount());
     }
 }
 public class ShoppingCartTest{
