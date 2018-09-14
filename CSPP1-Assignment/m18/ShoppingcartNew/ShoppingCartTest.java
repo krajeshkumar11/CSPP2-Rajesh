@@ -152,7 +152,7 @@ class ShoppingCart{
                 }
             }
         }
-        System.out.println("totalAmount: " + getTotalAmount());
+        // System.out.println("totalAmount: " + getTotalAmount());
         System.out.println("Total:" + getTotalAmount());
         System.out.println("Disc%:" + (getTotalAmount() / 100) * couponcode);
         // System.out.println(getTotalAmount() + " " + couponcode + "COUPEN");
