@@ -13,7 +13,7 @@ milk 12
 cofee 8
 totalAmount: 15960.0
 totalAmount: 15900.0
-Payable amount: 18285.0
+Payable amount: 14628.0
 Name   quantity   Price
 honey 50 280.0
 milk 10 30.0
@@ -21,6 +21,6 @@ cofee 8 30.0
 peas 34 40.0
 totalAmount: 15900.0
 Total:15900.0
-Disc%:0.0
-Tax:2385.0
-Payable amount: 18285.0
+Disc%:3180.0
+Tax:1908.0
+Payable amount: 14628.0

@@ -108,16 +108,16 @@ class ShoppingCart{
     }
 
     public double getPayableAmount(){
-        double total = getTotalAmount();
-        total -= couponcode; // Reducing coupen amount discount
-        total += (total / 100 ) * tax; // Adding tax
-        return total;
+        double payableTotal = getTotalAmount();
+        // total -= couponcode; // Reducing coupen amount discount
+        payableTotal -= (payableTotal / 100) * couponcode;
+        payableTotal += (payableTotal / 100 ) * tax; // Adding tax
+        return payableTotal;
     }
 
     public void applyCoupon(String coupon){
         if (coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")) {
             this.couponcode = Double.parseDouble(coupon.substring(3, coupon.length()));
-            this.cartTotal -= couponcode;
         }
     }
 
@@ -133,9 +133,9 @@ class ShoppingCart{
         }
         System.out.println("totalAmount: " + getTotalAmount());
         System.out.println("Total:" + getTotalAmount());
-        System.out.println("Disc%:" + couponcode);
+        System.out.println("Disc%:" + (getTotalAmount() / 100) * couponcode);
         // System.out.println(getTotalAmount() + " " + couponcode + "COUPEN");
-        System.out.println("Tax:" + ((getTotalAmount()-couponcode) / 100) * tax);
+        System.out.println("Tax:" + ((getTotalAmount() - ((getTotalAmount() / 100) * couponcode)) / 100) * tax);
         System.out.println("Payable amount: " + getPayableAmount());
     }
 }
