@@ -40,6 +40,10 @@ class Quiz {
         score = 0;
     }
 
+    public int getQuesstionsCount() {
+    	return questionscount;
+    }
+
     public void add(Question question){
         questions[questionscount++] = question;
     }
@@ -149,16 +153,20 @@ public class Solution {
         // tokenize the question line and create the question object
         // add the question objects to the quiz class
         // questions = new Quiz[questionCount];
-        int i = 0;
-        while(i < questionCount){
-            String line = s.nextLine();
-            String[] tokens = line.split(":");
-            String[] optionstokens = tokens[1].split(",");
-            Question newQuiz = new Question(tokens[0], optionstokens[0], optionstokens[1], optionstokens[2], optionstokens[3], tokens[2], tokens[3], tokens[4]);
-            quiz.add(newQuiz);
-            i++;
+        if (questionCount > 0){
+        	int i = 0;
+	        while(i < questionCount){
+	            String line = s.nextLine();
+	            String[] tokens = line.split(":");
+	            String[] optionstokens = tokens[1].split(",");
+	            Question newQuiz = new Question(tokens[0], optionstokens[0], optionstokens[1], optionstokens[2], optionstokens[3], tokens[2], tokens[3], tokens[4]);
+	            quiz.add(newQuiz);
+	            i++;
+	        }
+	        System.out.println(questionCount + " are added to the quiz");
+        } else {
+        	System.out.println("Quiz does not have questions");
         }
-        System.out.println(questionCount + " are added to the quiz");
     }
 
     /**
@@ -172,14 +180,16 @@ public class Solution {
         // write your code here to display the quiz questions
         // read the user responses from the console
         // store the user respones in the quiz object
-        quiz.printQuestions();
-        int i = 0;
-        while(i < answerCount){
-            String line = s.nextLine();
-            String[] tokens = line.split(" ");
-            quiz.checkAnswer(i, line);
-            i++;
-        }
+    	if(quiz.getQuesstionsCount() > 0){
+    		quiz.printQuestions();
+	        int i = 0;
+	        while(i < answerCount){
+	            String line = s.nextLine();
+	            String[] tokens = line.split(" ");
+	            quiz.checkAnswer(i, line);
+	            i++;
+	        }
+    	}
     }
 
     /**
@@ -189,6 +199,8 @@ public class Solution {
      */
     public static void displayScore(final Quiz quiz) {
         // write your code here to display the score report
-        System.out.println("Total Score: " + quiz.totalscore());
+        if(quiz.getQuesstionsCount() > 0){
+        	System.out.println("Total Score: " + quiz.totalscore());
+    	}
     }
 }
