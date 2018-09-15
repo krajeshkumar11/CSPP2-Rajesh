@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class Question {
     public String question;
+    public String[] options;
     public String op1;
     public String op2;
     public String op3;
@@ -14,11 +15,12 @@ class Question {
 
     }
     public Question(String question, String op1, String op2, String op3, String op4, String correctAns, String maxMarks, String negativeMarks) {
+    	options = new String[4];
         this.question = question;
-        this.op1 = op1;
-        this.op2 = op2;
-        this.op3 = op3;
-        this.op4 = op4;
+        this.options[0] = op1;
+        this.options[1] = op2;
+        this.options[2] = op3;
+        this.options[3] = op4;
         this.correctAns = correctAns;
         this.maxMarks = maxMarks;
         this.negativeMarks = negativeMarks;
@@ -45,7 +47,7 @@ class Quiz {
     public void checkAnswer(int index, String answer){
         boolean flag = false;
         // System.out.println(questions[index].question);
-        if (questions[index].correctAns.equals(answer)) {
+        if (questions[index].options[Integer.parseInt(questions[index].correctAns) - 1].equals(answer)) {
             // System.out.println("Correct Answer! - Marks Awarded: " + Integer.parseInt(questions[index].maxMarks));
             score += Integer.parseInt(questions[index].maxMarks);
         } else {
@@ -57,17 +59,22 @@ class Quiz {
     }
 
     public void printQuestions() {
+    	int count = 1;
         for (int i = 0; i < questionscount; i++) {
-            System.out.println(questions[i].question + "(" + (i + 1) + ")");
-            System.out.println(questions[i].op1 + "	" + questions[i].op2 + "	" + questions[i].op3 + "	" + questions[i].op4);
+            System.out.println(questions[i].question + "(" + (count++) + ")");
+            System.out.println(questions[i].options[0] + "	" + questions[i].options[1] + "	" + questions[i].options[2] + "	" + questions[i].options[3]);
             System.out.println();
+            if (count == 5) {
+            	count = 1;
+            }
         }
     }
 
     public int totalscore() {
     	for (int i = 0; i < questionscount; i++) {
     		System.out.println(questions[i].question);
-    		if (questions[i].correctAns.equals(answers[i])) {
+    		// System.out.println("RAJESH: " + answers[i] + " " + questions[i].options[Integer.parseInt(questions[i].correctAns) - 1]);
+    		if (questions[i].options[Integer.parseInt(questions[i].correctAns) - 1].equals(answers[i])) {
 	            System.out.println(" Correct Answer! - Marks Awarded: " + Integer.parseInt(questions[i].maxMarks));
 	            // score += Integer.parseInt(questions[i].maxMarks);
 	        } else {
@@ -170,7 +177,7 @@ public class Solution {
         while(i < answerCount){
             String line = s.nextLine();
             String[] tokens = line.split(" ");
-            quiz.checkAnswer(i, tokens[1]);
+            quiz.checkAnswer(i, line);
             i++;
         }
     }
