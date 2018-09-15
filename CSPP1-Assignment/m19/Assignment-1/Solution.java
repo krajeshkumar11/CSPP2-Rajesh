@@ -160,7 +160,7 @@ public class Solution {
 	            String line = s.nextLine();
 	            String[] tokens = line.split(":");
 	            String[] optionstokens = tokens[1].split(",");
-	            if(tokens[0] == null || tokens[2] == null || tokens[3] == null || tokens[4] == null){
+	            if(tokens.length < 5){
 	            	flag = true;
 	            	break;
 	            }
