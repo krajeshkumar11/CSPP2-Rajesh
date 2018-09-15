@@ -155,15 +155,24 @@ public class Solution {
         // questions = new Quiz[questionCount];
         if (questionCount > 0){
         	int i = 0;
+        	boolean flag = false;
 	        while(i < questionCount){
 	            String line = s.nextLine();
 	            String[] tokens = line.split(":");
 	            String[] optionstokens = tokens[1].split(",");
+	            if(tokens[0] == null || tokens[2] == null || tokens[3] == null || tokens[4] == null){
+	            	flag = true;
+	            	break;
+	            }
 	            Question newQuiz = new Question(tokens[0], optionstokens[0], optionstokens[1], optionstokens[2], optionstokens[3], tokens[2], tokens[3], tokens[4]);
 	            quiz.add(newQuiz);
 	            i++;
 	        }
-	        System.out.println(questionCount + " are added to the quiz");
+	        if (flag) {
+	        	System.out.println("Error! Malformed question");
+	        } else {
+	        	System.out.println(questionCount + " are added to the quiz");
+	        }
         } else {
         	System.out.println("Quiz does not have questions");
         }
