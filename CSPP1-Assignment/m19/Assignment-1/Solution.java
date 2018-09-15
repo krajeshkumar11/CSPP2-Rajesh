@@ -44,8 +44,12 @@ class Quiz {
     	return questionscount;
     }
 
-    public void add(Question question){
-        questions[questionscount++] = question;
+    public boolean add(Question addquestion){
+        if (Integer.parseInt(addquestion.correctAns) <= 4){
+            questions[questionscount++] = addquestion;
+            return true;
+        }
+        return false;
     }
 
     public void checkAnswer(int index, String answer){
@@ -156,6 +160,8 @@ public class Solution {
         if (questionCount > 0){
         	int i = 0;
         	boolean flag = false;
+            boolean flag1 = false;
+            boolean flag2 = false;
 	        while(i < questionCount){
 	            String line = s.nextLine();
 	            String[] tokens = line.split(":");
@@ -164,13 +170,23 @@ public class Solution {
 	            	flag = true;
 	            	break;
 	            }
+                if(Integer.parseInt(tokens[2]) > optionstokens.length){
+                    flag2 = true;
+                    break;
+                }
 	            Question newQuiz = new Question(tokens[0], optionstokens[0], optionstokens[1], optionstokens[2], optionstokens[3], tokens[2], tokens[3], tokens[4]);
-	            quiz.add(newQuiz);
-	            i++;
-	        }
-	        if (flag) {
-	        	System.out.println("Error! Malformed question");
-	        } else {
+                if (!quiz.add(newQuiz)) {
+                    flag1 = true;
+                    System.out.println("Error! Correct answer choice number is out of range for " + newQuiz.question);
+                    break;
+                }
+                i++;
+            }
+            if (flag) {
+                System.out.println("Error! Malformed question");
+            } else if(flag2){
+                System.out.println("trick question  does not have enough answer choices");
+            } else if(!flag1){
 	        	System.out.println(questionCount + " are added to the quiz");
 	        }
         } else {
