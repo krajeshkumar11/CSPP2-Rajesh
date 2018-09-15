@@ -44,15 +44,15 @@ class Quiz {
 
     public void checkAnswer(int index, String answer){
         boolean flag = false;
-        int position = 0;
         // System.out.println(questions[index].question);
         if (questions[index].correctAns.equals(answer)) {
             // System.out.println("Correct Answer! - Marks Awarded: " + Integer.parseInt(questions[index].maxMarks));
             score += Integer.parseInt(questions[index].maxMarks);
         } else {
             // System.out.println(" Correct Answer! - Marks Awarded: " + Integer.parseInt(questions[position].negativeMarks));
-            score += Integer.parseInt(questions[position].negativeMarks);
+            score += Integer.parseInt(questions[index].negativeMarks);
         }
+        // System.out.println(score);
         answers[answerscount++] = answer;
     }
 
