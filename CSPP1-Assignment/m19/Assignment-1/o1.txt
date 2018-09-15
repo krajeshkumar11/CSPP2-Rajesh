@@ -17,19 +17,15 @@ choice 1	choice 2	choice 3	choice 4
 question text 4(4)
 choice 1	choice 2	choice 3	choice 4
 
--4
--8
--12
--16
 |--------------|
 | Score Report |
 |--------------|
 question text 1
- Wrong Answer! - Marks Awarded: -4
+ Wrong Answer! - Penalty: -4
 question text 2
- Wrong Answer! - Marks Awarded: -3
+ Wrong Answer! - Penalty: -3
 question text 3
- Wrong Answer! - Marks Awarded: -2
+ Wrong Answer! - Penalty: -2
 question text 4
- Wrong Answer! - Marks Awarded: -1
-Total Score: -16
+ Wrong Answer! - Penalty: -1
+Total Score: -10

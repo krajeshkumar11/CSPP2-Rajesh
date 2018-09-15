@@ -71,7 +71,7 @@ class Quiz {
 	            System.out.println(" Correct Answer! - Marks Awarded: " + Integer.parseInt(questions[i].maxMarks));
 	            // score += Integer.parseInt(questions[i].maxMarks);
 	        } else {
-	            System.out.println(" Wrong Answer! - Marks Awarded: " + Integer.parseInt(questions[i].negativeMarks));
+	            System.out.println(" Wrong Answer! - Penalty: " + Integer.parseInt(questions[i].negativeMarks));
 	            // score += Integer.parseInt(questions[position].negativeMarks);
 	        }
     	}
