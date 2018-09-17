@@ -128,7 +128,15 @@ class Question {
     public String toString() {
         String s = "";
         s += this.questiontext + "(" + getMaxMarks() + ")\n";
-        s += this.choices[0] + "	" + this.choices[1] + "	" + this.choices[2] + "	" + this.choices[3];
+        if (this.choices.length == 1){
+            s += this.choices[0];
+        } else if(this.choices.length == 2) {
+            s += this.choices[0] + "\t" + this.choices[1];
+        } else if(this.choices.length == 3) {
+            s += this.choices[0] + "\t" + this.choices[1] + "\t" + this.choices[2];
+        } else if(this.choices.length == 4) {
+            s += this.choices[0] + "\t" + this.choices[1] + "\t" + this.choices[2] + "\t" + this.choices[3];
+        }
         s += "\n";
         return s;
     }
@@ -281,12 +289,24 @@ public final class Solution {
             boolean flag = false;
             boolean flag1 = false;
             boolean choiceout = false;
+            boolean choicessesless = false;
+            boolean invalidmax = false;
+            boolean invalidpenalty = false;
+            boolean questionnull = false;
             while(i < q){
                 String line = scan.nextLine();
                 String[] tokens = line.split(":");
                 String[] optionstokens = tokens[1].split(",");
-                // if ()
+                if (tokens[0].equals("")) {
+                	questionnull = true;
+                	break;
+                }
+
                 if(Integer.parseInt(tokens[2]) > optionstokens.length){
+                    if(optionstokens.length <= 4){
+                        choicessesless = true;
+                        break;
+                    }
                     choiceout = true;
                     break;
                 }
@@ -294,19 +314,30 @@ public final class Solution {
                     flag = true;
                     break;
                 }
+                if (Integer.parseInt(tokens[3]) <= 0) {
+                	invalidmax = true;
+                	break;
+                }
+                if (Integer.parseInt(tokens[4]) >= 0) {
+                	invalidpenalty = true;
+                	break;
+                }
                 Question newQuiz = new Question(tokens[0], optionstokens, Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4]));
                 quiz.addQuestion(newQuiz);
-                // if (!) {
-                //     flag1 = true;
-                //     System.out.println("Error! Correct answer choice number is out of range for " + newQuiz.question);
-                //     break;
-                // }
                 i++;
             }
             if (flag) {
                 System.out.println("Error! Malformed question");
+            } else if(choicessesless){
+                System.out.println("trick question  does not have enough answer choices");
             } else if(choiceout){
                 System.out.println("Error! Correct answer choice number is out of range for question text 1");
+            } else if(invalidmax){
+                System.out.println("Invalid max marks for question about sony");
+            } else if(invalidpenalty){
+                System.out.println("Invalid penalty for question about sony");
+            } else if(questionnull){
+                System.out.println("Error! Malformed question");
             } else if(!flag1){
                 System.out.println(q + " are added to the quiz");
             }
@@ -335,15 +366,6 @@ public final class Solution {
                 // String[] tokens = line.split(" ");
                 s.setResponse(line);
             }
-            // Question[] qs = quiz.getQuestion();
-            // int i = 0;
-            // while(i < q){
-            //     String line = scan.nextLine();
-            //     String[] tokens = line.split(" ");
-            //     quiz.
-            //     // quiz.checkAnswer(i, line);
-            //     i++;
-            // }
         }
     }
     /**
