@@ -193,23 +193,24 @@ class Quiz {
      */
     public String showReport() {
         String s = "";
-        int total = 0;
-        for (int i = 0; i < size; i++) {
-            s += questions[i].getQuestionText() + "\n";
-            String[] choices = questions[i].getChoice();
-            if (questions[i].evaluateResponse()){
-                s += " Correct Answer! - Marks Awarded: " +  questions[i].getMaxMarks();
-                total += questions[i].getMaxMarks();
-            } else {
-                s += " Wrong Answer! - Penalty: " +  questions[i].getPenalty();
-                total += questions[i].getPenalty();
+        if (size > 0){
+            int total = 0;
+            for (int i = 0; i < size; i++) {
+                s += questions[i].getQuestionText() + "\n";
+                String[] choices = questions[i].getChoice();
+                if (questions[i].evaluateResponse()){
+                    s += " Correct Answer! - Marks Awarded: " +  questions[i].getMaxMarks();
+                    total += questions[i].getMaxMarks();
+                } else {
+                    s += " Wrong Answer! - Penalty: " +  questions[i].getPenalty();
+                    total += questions[i].getPenalty();
+                }
+                s += "\n";
             }
-            s += "\n";
+            s += "Total Score: " + total;
         }
-        s += "Total Score: " + total;
         return s;
     }
-
 }
 /**
  * Solution class for code-eval.
