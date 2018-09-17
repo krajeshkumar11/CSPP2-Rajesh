@@ -303,11 +303,11 @@ public final class Solution {
                 }
 
                 if(Integer.parseInt(tokens[2]) > optionstokens.length){
+                    if(optionstokens.length <= 4){
+                        choicessesless = true;
+                        break;
+                    }
                     choiceout = true;
-                    break;
-                }
-                if(optionstokens.length <= 4){
-                    choicessesless = true;
                     break;
                 }
                 if(tokens.length < 5){
