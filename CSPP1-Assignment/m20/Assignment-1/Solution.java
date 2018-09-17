@@ -280,17 +280,18 @@ public final class Solution {
             int i = 0;
             boolean flag = false;
             boolean flag1 = false;
-            boolean flag2 = false;
+            boolean choiceout = false;
             while(i < q){
                 String line = scan.nextLine();
                 String[] tokens = line.split(":");
                 String[] optionstokens = tokens[1].split(",");
-                if(tokens.length < 5){
-                    flag = true;
+                // if ()
+                if(Integer.parseInt(tokens[2]) > optionstokens.length){
+                    choiceout = true;
                     break;
                 }
-                if(Integer.parseInt(tokens[2]) > optionstokens.length){
-                    flag2 = true;
+                if(tokens.length < 5){
+                    flag = true;
                     break;
                 }
                 Question newQuiz = new Question(tokens[0], optionstokens, Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4]));
@@ -304,8 +305,8 @@ public final class Solution {
             }
             if (flag) {
                 System.out.println("Error! Malformed question");
-            } else if(flag2){
-                System.out.println("trick question  does not have enough answer choices");
+            } else if(choiceout){
+                System.out.println("Error! Correct answer choice number is out of range for question text 1");
             } else if(!flag1){
                 System.out.println(q + " are added to the quiz");
             }
