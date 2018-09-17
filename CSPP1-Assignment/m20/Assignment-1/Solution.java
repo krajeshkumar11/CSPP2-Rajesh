@@ -127,7 +127,7 @@ class Question {
      */
     public String toString() {
         String s = "";
-        s += this.questiontext + "(" +  ")\n";
+        s += this.questiontext + "(" + getMaxMarks() + ")\n";
         s += this.choices[0] + "	" + this.choices[1] + "	" + this.choices[2] + "	" + this.choices[3];
         s += "\n";
         return s;
