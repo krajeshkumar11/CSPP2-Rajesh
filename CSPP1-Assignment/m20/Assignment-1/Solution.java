@@ -303,11 +303,11 @@ public final class Solution {
                 }
 
                 if(Integer.parseInt(tokens[2]) > optionstokens.length){
-                    if(optionstokens.length <= 4){
-                        choicessesless = true;
-                        break;
-                    }
                     choiceout = true;
+                    break;
+                }
+                if(optionstokens.length <= 4){
+                    choicessesless = true;
                     break;
                 }
                 if(tokens.length < 5){
@@ -328,10 +328,10 @@ public final class Solution {
             }
             if (flag) {
                 System.out.println("Error! Malformed question");
-            } else if(choicessesless){
-                System.out.println("trick question  does not have enough answer choices");
             } else if(choiceout){
                 System.out.println("Error! Correct answer choice number is out of range for question text 1");
+            } else if(choicessesless){
+                System.out.println("trick question  does not have enough answer choices");
             } else if(invalidmax){
                 System.out.println("Invalid max marks for question about sony");
             } else if(invalidpenalty){
