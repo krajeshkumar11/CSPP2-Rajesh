@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Class for item.
+ */
 class Item{
     private String name;
     private int quantity;
