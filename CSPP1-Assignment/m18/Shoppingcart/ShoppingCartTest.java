@@ -63,9 +63,9 @@ class ShoppingCart{
         for (int i = 0; i < cartitemscount; i++) {
             for (int j = 0; j < storeitemscount; j++) {
                 if(cartitems[i].getName().equals(storeitems[j].getName()) && item.getName().equals(cartitems[i].getName())){
-                    if(cartitems[i].getQuantity() > item.getQuantity()){
+                    if(storeitems[j].getQuantity() > item.getQuantity()){
                         flag = 1;
-                        position = 1;
+                        position = i;
                     }
                 }
             }
@@ -132,8 +132,13 @@ class ShoppingCart{
     }
 
     public void applyCoupon(String coupon){
-        if (coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")) {
-            this.couponcode = Double.parseDouble(coupon.substring(3, coupon.length()));
+        if(couponcode == 0 ){
+            if (coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")) {
+                this.couponcode = Double.parseDouble(coupon.substring(3, coupon.length()));
+            } else {
+                System.out.println("Invalid coupon");
+            }
+
         }
     }
 
@@ -147,7 +152,7 @@ class ShoppingCart{
                 }
             }
         }
-        System.out.println("totalAmount: " + getTotalAmount());
+        // System.out.println("totalAmount: " + getTotalAmount());
         System.out.println("Total:" + getTotalAmount());
         System.out.println("Disc%:" + (getTotalAmount() / 100) * couponcode);
         // System.out.println(getTotalAmount() + " " + couponcode + "COUPEN");

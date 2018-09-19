@@ -70,6 +70,12 @@ class BookYourShow{
     }
 }
 public class Menu {
+    public static String[] stringArray(String tickets){
+        tickets = tickets.substring(0, tickets.length() - 1);
+        String[] stringArr = tickets.split(",");
+        System.out.println(stringArr[0] + " " + stringArr[1]);
+        return stringArr;
+    }
     public static void main(String[] args) {
         Scanner stdin = new Scanner(new BufferedInputStream(System.in));
         BookYourShow bus = new BookYourShow();
@@ -78,16 +84,18 @@ public class Menu {
             // split the line using space
             String[] tokens = line.split(" ");
             switch (tokens[0]) {
-            case "addAShow":
+            case "add":
+                String[] details = tokens[1].split(",");
+                stringArray(tokens)
                 // bus.addAShow();
                 break;
-            case "getAShow":
+            case "get":
                 // bus.getAShow();
                 break;
-            case "bookAShow":
+            case "book":
                 // bus.bookAShow();
                 break;
-            case "printTickets":
+            case "print":
                 // bus.printTickets();
                 break;
             case "removeAMovie":
