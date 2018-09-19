@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 
+/**
+ * Class for question.
+ */
 class Question {
     public String question;
     public String[] options;
