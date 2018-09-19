@@ -4,6 +4,9 @@ import java.util.Scanner;
  * Class for solution.
  */
 
+/**
+ * Class for show.
+ */
 class Show{
     public String movie_name;
     public String date;
