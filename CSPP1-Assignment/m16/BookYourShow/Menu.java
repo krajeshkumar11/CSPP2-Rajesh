@@ -1,6 +1,9 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
 
+/**
+ * Class for show.
+ */
 class Show{
     public String movieName;
     public String showTime;
