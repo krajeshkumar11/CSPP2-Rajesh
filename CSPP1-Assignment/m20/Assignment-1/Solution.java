@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- * Class for question.
+ *  Class for question.
  */
 class Question {
     /**
