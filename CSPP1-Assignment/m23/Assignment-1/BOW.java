@@ -68,29 +68,6 @@ class Document {
 }
 
 public class BOW {
-    // public static String readFile(File f1)throws Exception {
-    //     BufferedReader br = new BufferedReader(new FileReader(f1));
-    //     String data = "";
-    //     String st;
-    //     while ((st = br.readLine()) != null){
-    //         data += st;
-    //     }
-    //     return data;
-    // }
-
-    // public static HashMap<String, Integer> generateHashMap(String st) {
-    //     HashMap<String, Integer> HM = new HashMap<>();
-    //     String[] stArr = st.split(" ");
-    //     for (String each : stArr) {
-    //         int count = 1;
-    //         if (HM.containsKey(each)) {
-    //             count = HM.get(each) + 1;
-    //             HM.remove(each);
-    //         }
-    //         HM.put(each, count);
-    //     }
-    //     return HM;
-    // }
 
     public static HashMap<String, Integer> getDotProduct(HashMap<String, Integer> hm1, HashMap<String, Integer> hm2) {
         HashMap<String, Integer> dp = new HashMap<String, Integer>();
@@ -114,17 +91,6 @@ public class BOW {
         }
         return total;
     }
-
-    // public static double getEuclideanNorm (HashMap<String, Integer> hm) {
-    //     Integer[] hmvals = hm.values().toArray(new Integer[0]);
-    //     double total = 0;
-    //     if (hmvals.length > 0) {
-    //         for (Integer each: hmvals) {
-    //             total += each * each;
-    //         }
-    //     }
-    //     return Math.sqrt(total);
-    // }
 
     public static void main(String[] args)throws Exception {
         Scanner sc = new Scanner(System.in);
