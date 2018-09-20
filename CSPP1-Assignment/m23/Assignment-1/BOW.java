@@ -4,20 +4,46 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.lang.Math;
 
-public class BOW {
-    public static String readFile(File f1)throws Exception {
+class Document {
+	private String document;
+	private HashMap<String, Integer> hashMap;
+	private double euclideanNormValue;
+
+	public Document () {
+		this.document = "";
+		this.hashMap = new HashMap<String, Integer>();
+		this.euclideanNormValue = 0;
+	}
+
+	public String getDocument() {
+		return this.document;
+	}
+
+	public HashMap<String, Integer> getHashMap() {
+		return this.hashMap;
+	}
+
+	public double getEuclideanNormValue () {
+		return euclideanNormValue;
+	}
+
+	public void cleanString() {
+		this.document = this.document.replaceAll("[0-9_]","").toLowerCase();
+	}
+
+	public void readFile(File f1)throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(f1));
         String data = "";
         String st;
         while ((st = br.readLine()) != null){
             data += st;
         }
-        return data;
+        this.document = data;
     }
 
-    public static HashMap<String, Integer> generateHashMap(String st) {
+    public void generateHashMap() {
         HashMap<String, Integer> HM = new HashMap<>();
-        String[] stArr = st.split(" ");
+        String[] stArr = this.document.split(" ");
         for (String each : stArr) {
             int count = 1;
             if (HM.containsKey(each)) {
@@ -26,8 +52,45 @@ public class BOW {
             }
             HM.put(each, count);
         }
-        return HM;
+        this.hashMap = HM;
     }
+
+    public void generateEuclideanNorm () {
+        Integer[] hmvals = this.hashMap.values().toArray(new Integer[0]);
+        double total = 0;
+        if (hmvals.length > 0) {
+            for (Integer each: hmvals) {
+                total += each * each;
+            }
+        }
+        this.euclideanNormValue = Math.sqrt(total);
+    }
+}
+
+public class BOW {
+    // public static String readFile(File f1)throws Exception {
+    //     BufferedReader br = new BufferedReader(new FileReader(f1));
+    //     String data = "";
+    //     String st;
+    //     while ((st = br.readLine()) != null){
+    //         data += st;
+    //     }
+    //     return data;
+    // }
+
+    // public static HashMap<String, Integer> generateHashMap(String st) {
+    //     HashMap<String, Integer> HM = new HashMap<>();
+    //     String[] stArr = st.split(" ");
+    //     for (String each : stArr) {
+    //         int count = 1;
+    //         if (HM.containsKey(each)) {
+    //             count = HM.get(each) + 1;
+    //             HM.remove(each);
+    //         }
+    //         HM.put(each, count);
+    //     }
+    //     return HM;
+    // }
 
     public static HashMap<String, Integer> getDotProduct(HashMap<String, Integer> hm1, HashMap<String, Integer> hm2) {
         HashMap<String, Integer> dp = new HashMap<String, Integer>();
@@ -52,16 +115,16 @@ public class BOW {
         return total;
     }
 
-    public static double getEuclideanNorm (HashMap<String, Integer> hm) {
-        Integer[] hmvals = hm.values().toArray(new Integer[0]);
-        double total = 0;
-        if (hmvals.length > 0) {
-            for (Integer each: hmvals) {
-                total += each * each;
-            }
-        }
-        return Math.sqrt(total);
-    }
+    // public static double getEuclideanNorm (HashMap<String, Integer> hm) {
+    //     Integer[] hmvals = hm.values().toArray(new Integer[0]);
+    //     double total = 0;
+    //     if (hmvals.length > 0) {
+    //         for (Integer each: hmvals) {
+    //             total += each * each;
+    //         }
+    //     }
+    //     return Math.sqrt(total);
+    // }
 
     public static void main(String[] args)throws Exception {
         Scanner sc = new Scanner(System.in);
@@ -75,7 +138,6 @@ public class BOW {
         File[] file_name = null;
         if(!st.equals("")){
         	listoffiles=folder.listFiles();
-	        // long Matrix[][]=new long[listoffiles.length][listoffiles.length];
 	        file_name=new File[listoffiles.length];
 	        for (int i=0;i<listoffiles.length ;++i )
 	        {
@@ -104,17 +166,29 @@ public class BOW {
                 System.out.print(file_name[i].getName() + "\t");
                 for (int j=0;j<file_name.length ;++j )
                 {
-                    String s1 = readFile(file_name[i]);
-                    String s2 = readFile(file_name[j]);
-                    s1 = s1.replaceAll("[0-9_]","").toLowerCase();
-                    s2 = s2.replaceAll("[0-9_]","").toLowerCase();
-                    HashMap<String, Integer> f1HashMap = generateHashMap(s1);
-                    HashMap<String, Integer> f2HashMap = generateHashMap(s2);
-                    double e1 = getEuclideanNorm(f1HashMap);
-                    double e2 = getEuclideanNorm(f2HashMap);
-                    HashMap<String, Integer> dotProductHM = getDotProduct(f1HashMap, f2HashMap);
+                	Document d1 = new Document();
+                	d1.readFile(file_name[i]);
+                	// d1.readFile(new File("Test\\File1.txt"));
+                	Document d2 = new Document();
+                	d2.readFile(file_name[j]);
+                	// d2.readFile(new File("Test\\File2.txt"));
+                    // String s1 = readFile(file_name[i]);
+                    // String s2 = readFile(file_name[j]);
+                    d1.cleanString();
+                    d2.cleanString();
+                    // s1 = s1.replaceAll("[0-9_]","").toLowerCase();
+                    // s2 = s2.replaceAll("[0-9_]","").toLowerCase();
+                    d1.generateHashMap();
+                    d2.generateHashMap();
+                    // HashMap<String, Integer> f1HashMap = generateHashMap(s1);
+                    // HashMap<String, Integer> f2HashMap = generateHashMap(s2);
+                    d1.generateEuclideanNorm();
+                    d2.generateEuclideanNorm();
+                    // double e1 = getEuclideanNorm(f1HashMap);
+                    // double e2 = getEuclideanNorm(f2HashMap);
+                    HashMap<String, Integer> dotProductHM = getDotProduct(d1.getHashMap(), d2.getHashMap());
                     double dotProductValue = getSumOfDP(dotProductHM);
-                    long cosine = Math.round(dotProductValue/(e1 * e2) * 100);
+                    long cosine = Math.round(dotProductValue/(d1.getEuclideanNormValue() * d2.getEuclideanNormValue()) * 100);
                     System.out.print(cosine + "\t\t");
                     if (max < cosine && i != j) {
                     	p = i;
