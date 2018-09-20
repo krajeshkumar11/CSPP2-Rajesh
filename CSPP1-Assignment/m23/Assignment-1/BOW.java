@@ -65,20 +65,27 @@ public class BOW {
 
     public static void main(String[] args)throws Exception {
         Scanner sc = new Scanner(System.in);
-        File folder=new File(sc.nextLine());
+        String st = "";
+        while (sc.hasNext()) {
+        	st = sc.nextLine();
+        }
+        File folder=new File(st);
         int k=0;
-
-        File[] listoffiles=folder.listFiles();
-        long Matrix[][]=new long[listoffiles.length][listoffiles.length];
-        File[] file_name=new File[listoffiles.length];
-        for (int i=0;i<listoffiles.length ;++i )
-        {
-            File file=listoffiles[i];
-            if(file.getName().endsWith(".txt"))
-            {
-                file_name[k]=file;
-                k++;
-            }
+        File[] listoffiles = null;
+        File[] file_name = null;
+        if(!st.equals("")){
+        	listoffiles=folder.listFiles();
+	        // long Matrix[][]=new long[listoffiles.length][listoffiles.length];
+	        file_name=new File[listoffiles.length];
+	        for (int i=0;i<listoffiles.length ;++i )
+	        {
+	            File file=listoffiles[i];
+	            if(file.getName().endsWith(".txt"))
+	            {
+	                file_name[k]=file;
+	                k++;
+	            }
+	        }
         }
         if(k==0)
         {
