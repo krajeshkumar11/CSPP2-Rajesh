@@ -1,12 +1,11 @@
 import java.io.*;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Arrays;
 import java.lang.Math;
 
 public class BOW {
-    public static String readFile(String fname)throws Exception {
-
-        File f1 = new File(fname);
+    public static String readFile(File f1)throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(f1));
         String data = "";
         String st;
@@ -65,19 +64,19 @@ public class BOW {
     }
 
     public static void main(String[] args)throws Exception {
-        File folder=new File(args[0]);
+        Scanner sc = new Scanner(System.in);
+        File folder=new File(sc.nextLine());
         int k=0;
 
         File[] listoffiles=folder.listFiles();
         long Matrix[][]=new long[listoffiles.length][listoffiles.length];
         File[] file_name=new File[listoffiles.length];
         for (int i=0;i<listoffiles.length ;++i )
-         {
+        {
             File file=listoffiles[i];
             if(file.getName().endsWith(".txt"))
             {
-                 file_name[k]=file;
-
+                file_name[k]=file;
                 k++;
             }
         }
@@ -86,29 +85,39 @@ public class BOW {
             System.out.println("empty directory");
         }
         else{
-            System.out.println("HI");
+        	int p = 0, q = 0;
+        	long max = 0;
+            System.out.print("      	\t");
+            for (int i=0;i<file_name.length ;++i ) {
+                System.out.print(file_name[i].getName() + "\t");
+            }
+            System.out.println();
+            for (int i=0;i<file_name.length ;++i )
+            {
+                System.out.print(file_name[i].getName() + "\t");
+                for (int j=0;j<file_name.length ;++j )
+                {
+                    String s1 = readFile(file_name[i]);
+                    String s2 = readFile(file_name[j]);
+                    s1 = s1.replaceAll("[0-9_]","").toLowerCase();
+                    s2 = s2.replaceAll("[0-9_]","").toLowerCase();
+                    HashMap<String, Integer> f1HashMap = generateHashMap(s1);
+                    HashMap<String, Integer> f2HashMap = generateHashMap(s2);
+                    double e1 = getEuclideanNorm(f1HashMap);
+                    double e2 = getEuclideanNorm(f2HashMap);
+                    HashMap<String, Integer> dotProductHM = getDotProduct(f1HashMap, f2HashMap);
+                    double dotProductValue = getSumOfDP(dotProductHM);
+                    long cosine = Math.round(dotProductValue/(e1 * e2) * 100);
+                    System.out.print(cosine + "\t\t");
+                    if (max < cosine && i != j) {
+                    	p = i;
+                    	q = j;
+                    	max = cosine;
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println("Maximum similarity is between " + file_name[p].getName() + " and " + file_name[q].getName());
         }
-
-        // String[] arr = {"Test\\File1.txt", "Test\\File2.txt", "Test\\File3.txt", "Test\\File4.txt", "Test\\File5.txt"};
-        // String[] arr = {"Test2\\File1.txt", "Test2\\File2.txt", "Test2\\File3.txt", "Test2\\File4.txt"};
-        // // System.out.println("\t" + arr[0] + "\t" + arr[1] + "\t" + arr[2] + "\t" + arr[3] + "\t" + arr[4]);
-        // System.out.println("\t" + arr[0] + "\t" + arr[1] + "\t" + arr[2] + "\t" + arr[3]);
-        // for (String each1 : arr) {
-        //     System.out.print(each1 + "\t");
-        //     for (String each2 : arr) {
-        //         String s1 = readFile(each1);
-        //         String s2 = readFile(each2);
-        //         s1 = s1.replaceAll("[0-9_]","").toLowerCase();
-        //         s2 = s2.replaceAll("[0-9_]","").toLowerCase();
-        //         HashMap<String, Integer> f1HashMap = generateHashMap(s1);
-        //         HashMap<String, Integer> f2HashMap = generateHashMap(s2);
-        //         double e1 = getEuclideanNorm(f1HashMap);
-        //         double e2 = getEuclideanNorm(f2HashMap);
-        //         HashMap<String, Integer> dotProductHM = getDotProduct(f1HashMap, f2HashMap);
-        //         double dotProductValue = getSumOfDP(dotProductHM);
-        //         System.out.print(Math.round(dotProductValue/(e1 * e2) * 100) + "\t");
-        //     }
-        //     System.out.println();
-        // }
     }
 }
