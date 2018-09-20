@@ -166,29 +166,19 @@ public class BOW {
                 System.out.print(file_name[i].getName() + "\t");
                 for (int j=0;j<file_name.length ;++j )
                 {
-                	Document d1 = new Document();
-                	d1.readFile(file_name[i]);
-                	// d1.readFile(new File("Test\\File1.txt"));
-                	Document d2 = new Document();
-                	d2.readFile(file_name[j]);
-                	// d2.readFile(new File("Test\\File2.txt"));
-                    // String s1 = readFile(file_name[i]);
-                    // String s2 = readFile(file_name[j]);
-                    d1.cleanString();
-                    d2.cleanString();
-                    // s1 = s1.replaceAll("[0-9_]","").toLowerCase();
-                    // s2 = s2.replaceAll("[0-9_]","").toLowerCase();
-                    d1.generateHashMap();
-                    d2.generateHashMap();
-                    // HashMap<String, Integer> f1HashMap = generateHashMap(s1);
-                    // HashMap<String, Integer> f2HashMap = generateHashMap(s2);
-                    d1.generateEuclideanNorm();
-                    d2.generateEuclideanNorm();
-                    // double e1 = getEuclideanNorm(f1HashMap);
-                    // double e2 = getEuclideanNorm(f2HashMap);
-                    HashMap<String, Integer> dotProductHM = getDotProduct(d1.getHashMap(), d2.getHashMap());
+                	Document documentOne = new Document();
+                	Document documentTwo = new Document();
+                	documentOne.readFile(file_name[i]);
+                	documentTwo.readFile(file_name[j]);
+                	documentOne.cleanString();
+                    documentTwo.cleanString();
+                    documentOne.generateHashMap();
+                    documentTwo.generateHashMap();
+                    documentOne.generateEuclideanNorm();
+                    documentTwo.generateEuclideanNorm();
+                    HashMap<String, Integer> dotProductHM = getDotProduct(documentOne.getHashMap(), documentTwo.getHashMap());
                     double dotProductValue = getSumOfDP(dotProductHM);
-                    long cosine = Math.round(dotProductValue/(d1.getEuclideanNormValue() * d2.getEuclideanNormValue()) * 100);
+                    long cosine = Math.round(dotProductValue/(documentOne.getEuclideanNormValue() * documentTwo.getEuclideanNormValue()) * 100);
                     System.out.print(cosine + "\t\t");
                     if (max < cosine && i != j) {
                     	p = i;
