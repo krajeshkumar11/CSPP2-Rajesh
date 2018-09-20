@@ -1,0 +1,9 @@
+
+****Plagiarism check through Bag of Words*****
+File Name	
+
+****Plagiarism check through LCS*****
+File Name	
+
+****Plagiarism check through Finger Printing*****
+File Name	
